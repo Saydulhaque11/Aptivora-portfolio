@@ -1,0 +1,155 @@
+The website build is complete, but do NOT publish yet.
+
+Now replace ALL placeholder content with Saydul Haque Sayeed's real information.
+
+Use the following confirmed information:
+
+NAME:
+Saydul Haque Sayeed
+
+EMAIL:
+haquesaydul200411@gmai.com
+
+PHONE:
++8801616094323
+
+LINKEDIN:
+https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/
+
+GITHUB:
+https://github.com/Saydulhaque11
+
+INSTAGRAM:
+Use the provided Instagram profile link if it is a public profile link. If the current link is an Accounts Center management URL, do not display that as the public Instagram link. Keep it as a placeholder until a public profile URL is available.
+
+PROFESSIONAL POSITIONING:
+AI Automation Engineer & Web Developer
+
+Also describe Saydul as:
+Computer Science & AI Student
+AI Automation Developer
+AI Agent Builder
+n8n Workflow Developer
+Web Developer
+
+PROJECTS:
+
+There are 13 real LinkedIn project posts.
+
+Project 1:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-emailautomation-activity-7499559609662074880-eXuG
+
+Project 2:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-workflowautomation-activity-7493637314728841216-qBjn
+
+Project 3:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-workflowautomation-activity-7490119278642470912-xNdh
+
+Project 4:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_businessautomation-aiworkflows-businessintelligence-activity-7485006033828982784-3uQ7
+
+Project 5:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-automation-aiautomation-activity-7482720203810701312-PN72
+
+Project 6:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-aiagent-n8n-activity-7480374405982801920-5nJQ
+
+Project 7:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-aiagent-n8n-activity-7479987668995674112-sJK9
+
+Project 8:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-lovabledev-activity-7478805199181160448-5aPT
+
+Project 9:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-artificialintelligence-aiautomation-activity-7477722474361667585-kHW3
+
+Project 10:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-automation-workflowautomation-activity-7476471204250296320-XLuS
+
+Project 11:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-nocode-activity-7474229557496315904-_nX9
+
+Project 12:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-leadqualification-activity-7473251498660077568-wmWi
+
+Project 13:
+https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-aiagents-automation-activity-7472356082074554368-g1qb
+
+IMPORTANT PROJECT RULES:
+
+- Keep all 13 real projects in the All Projects section.
+- Show 3–4 strongest projects as Featured Projects.
+- Every project must have a working "View Project" button.
+- Each View Project button must open the correct corresponding LinkedIn post.
+- Do not invent project results, client names, revenue, percentages, testimonials or achievements.
+- If exact project information is unavailable, use a neutral description based only on the available information.
+- Do not create fake metrics.
+
+CV / EXPERIENCE / EDUCATION:
+
+Use the real information from Saydul's provided CV.
+
+Education:
+B.Sc. in Computer Science and Engineering
+Leading University, Sylhet
+2024 – Present
+
+HSC — Science
+Scholarshome Majortila College, Sylhet
+2021–2023
+
+SSC — Science
+Barohal Ehia High School
+2019–2021
+
+Skills should reflect the real CV information, including:
+- n8n Workflow Development
+- AI Workflow Automation
+- AI Agent Development
+- GoHighLevel Automation
+- REST API & Webhook Integration
+- CRM & Lead Management Automation
+- Prompt Engineering
+- Website & Funnel Development
+- Python
+- Java
+- C++
+- Microsoft Office / Excel
+
+Professional/technical experience should be presented honestly as project-based and hands-on experience where formal employment information is not available.
+
+TESTIMONIALS:
+
+Do NOT invent testimonials.
+
+If real testimonials are not available, either hide the testimonial section or show a tasteful "Testimonials coming soon" placeholder.
+
+RESUME:
+
+Use Saydul's actual CV if the file is available in the project.
+
+If the actual PDF cannot be attached or accessed, create a clearly marked resume placeholder rather than inventing a downloadable resume.
+
+FINAL CHECK:
+
+Before considering the site complete, verify:
+- All 13 LinkedIn project URLs
+- Email
+- LinkedIn
+- GitHub
+- Instagram
+- Navigation
+- CTA buttons
+- Contact section
+- Resume button
+- Project filtering
+- Case-study interactions
+- Desktop responsiveness
+- Mobile responsiveness
+- Animations
+- No fake information
+- No broken links
+
+Do NOT publish yet.
+
+After completing these changes, tell me exactly what placeholders still remain, if any.

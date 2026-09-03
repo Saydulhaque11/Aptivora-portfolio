@@ -17,10 +17,10 @@ import {
   Github,
   Linkedin,
   Mail,
-  MapPin,
   Menu,
   MessageSquareText,
   Network,
+  Phone,
   Send,
   ShoppingCart,
   Sparkles,
@@ -44,6 +44,7 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
+  url: string;
   icon: IconType;
   tone: string;
   accent: string;
@@ -54,60 +55,199 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: 'ai-agent-workflows',
+    id: 'ai-email-automation',
     index: '01',
-    category: 'AI systems',
-    title: 'AI agent workflows',
-    description: 'Structured automations that connect agent logic to real business processes.',
-    tags: ['AI agents', 'n8n', 'Webhooks'],
+    category: 'AI automation',
+    title: 'AI email automation',
+    description: 'An AI automation workflow focused on email operations.',
+    tags: ['AI automation', 'n8n', 'Email automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-emailautomation-activity-7499559609662074880-eXuG',
     icon: Bot,
     tone: 'bg-[#dceceb]',
     accent: 'text-[#096e6b]',
-    detail: 'Case study details are a placeholder until project context is added.',
-    role: 'AI automation / workflow development',
-    stack: ['n8n', 'REST APIs', 'Webhooks'],
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI automation / n8n workflow development',
+    stack: ['AI automation', 'n8n', 'Email automation'],
   },
   {
-    id: 'crm-automation',
+    id: 'n8n-workflow-automation',
     index: '02',
-    category: 'Operations',
-    title: 'CRM automation',
-    description: 'Clearer handoffs between conversations, records, and the work that follows.',
-    tags: ['CRM', 'REST APIs', 'Business process'],
+    category: 'n8n workflows',
+    title: 'n8n workflow automation',
+    description: 'An n8n automation workflow built around connected process steps.',
+    tags: ['n8n', 'AI automation', 'Workflow automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-workflowautomation-activity-7493637314728841216-qBjn',
     icon: DatabaseZap,
     tone: 'bg-[#f4dfbd]',
     accent: 'text-[#9a5b1d]',
-    detail: 'Case study details are a placeholder until project context is added.',
-    role: 'Business process automation / CRM automation',
-    stack: ['CRM automation', 'REST APIs', 'n8n'],
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'n8n workflow development',
+    stack: ['n8n', 'AI automation', 'Workflow automation'],
   },
   {
-    id: 'ecommerce-automation',
+    id: 'ai-workflow-automation',
     index: '03',
-    category: 'Commerce',
-    title: 'E-commerce automation',
-    description: 'Connected systems for the repetitive steps around online commerce.',
-    tags: ['E-commerce', 'Webhooks', 'Automation'],
+    category: 'AI automation',
+    title: 'AI workflow automation',
+    description: 'An AI-assisted workflow automation project built with n8n.',
+    tags: ['AI automation', 'n8n', 'Workflow automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-workflowautomation-activity-7490119278642470912-xNdh',
     icon: ShoppingCart,
     tone: 'bg-[#f0d8d2]',
     accent: 'text-[#af4d3c]',
-    detail: 'Case study details are a placeholder until project context is added.',
-    role: 'E-commerce automation / workflow development',
-    stack: ['Webhooks', 'REST APIs', 'Business process automation'],
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI automation / workflow development',
+    stack: ['AI automation', 'n8n', 'Workflow automation'],
   },
   {
-    id: 'modern-web-development',
+    id: 'business-automation-intelligence',
     index: '04',
-    category: 'Web development',
-    title: 'Modern web development',
-    description: 'Interfaces that make technical products easier to understand and use.',
-    tags: ['Web development', 'Systems thinking'],
+    category: 'Business automation',
+    title: 'Business automation + intelligence',
+    description: 'A business automation workflow connecting AI workflows with business intelligence.',
+    tags: ['Business automation', 'AI workflows', 'Business intelligence'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_businessautomation-aiworkflows-businessintelligence-activity-7485006033828982784-3uQ7',
     icon: Code2,
     tone: 'bg-[#e2e1eb]',
     accent: 'text-[#575681]',
-    detail: 'Case study details are a placeholder until project context is added.',
-    role: 'Modern web development',
-    stack: ['Modern web development', 'REST APIs'],
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'Business automation / AI workflow development',
+    stack: ['Business automation', 'AI workflows', 'Business intelligence'],
+  },
+  {
+    id: 'n8n-automation',
+    index: '05',
+    category: 'n8n workflows',
+    title: 'n8n automation',
+    description: 'An n8n automation project focused on repeatable workflow logic.',
+    tags: ['n8n', 'Automation', 'AI automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-automation-aiautomation-activity-7482720203810701312-PN72',
+    icon: Workflow,
+    tone: 'bg-[#d9e5ed]',
+    accent: 'text-[#28617d]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'n8n workflow development',
+    stack: ['n8n', 'Automation', 'AI automation'],
+  },
+  {
+    id: 'ai-agent-n8n',
+    index: '06',
+    category: 'AI agents',
+    title: 'AI agent workflow',
+    description: 'An AI agent automation workflow developed with n8n.',
+    tags: ['AI automation', 'AI agent', 'n8n'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-aiagent-n8n-activity-7480374405982801920-5nJQ',
+    icon: Bot,
+    tone: 'bg-[#e4ded2]',
+    accent: 'text-[#8b5d2d]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI agent development / n8n workflow development',
+    stack: ['AI automation', 'AI agent', 'n8n'],
+  },
+  {
+    id: 'ai-agent-automation',
+    index: '07',
+    category: 'AI agents',
+    title: 'AI agent automation',
+    description: 'An AI agent project exploring practical automation workflows.',
+    tags: ['AI', 'AI agent', 'n8n'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-aiagent-n8n-activity-7479987668995674112-sJK9',
+    icon: Sparkles,
+    tone: 'bg-[#e1e8dc]',
+    accent: 'text-[#4b7851]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI agent development / automation',
+    stack: ['AI', 'AI agent', 'n8n'],
+  },
+  {
+    id: 'ai-automation-web',
+    index: '08',
+    category: 'Web development',
+    title: 'AI automation web experience',
+    description: 'A web development project connected to AI automation workflows.',
+    tags: ['AI automation', 'n8n', 'Web development'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_aiautomation-n8n-lovabledev-activity-7478805199181160448-5aPT',
+    icon: Code2,
+    tone: 'bg-[#e2e1eb]',
+    accent: 'text-[#575681]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'Web development / AI automation',
+    stack: ['AI automation', 'n8n', 'Web development'],
+  },
+  {
+    id: 'artificial-intelligence-automation',
+    index: '09',
+    category: 'AI automation',
+    title: 'Applied AI automation',
+    description: 'An AI automation project exploring applied artificial intelligence.',
+    tags: ['AI', 'Artificial intelligence', 'AI automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-artificialintelligence-aiautomation-activity-7477722474361667585-kHW3',
+    icon: Sparkles,
+    tone: 'bg-[#dceceb]',
+    accent: 'text-[#096e6b]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI automation development',
+    stack: ['AI', 'Artificial intelligence', 'AI automation'],
+  },
+  {
+    id: 'workflow-automation',
+    index: '10',
+    category: 'n8n workflows',
+    title: 'Workflow automation',
+    description: 'An n8n workflow automation project for connected process logic.',
+    tags: ['n8n', 'Automation', 'Workflow automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-automation-workflowautomation-activity-7476471204250296320-XLuS',
+    icon: Workflow,
+    tone: 'bg-[#f4dfbd]',
+    accent: 'text-[#9a5b1d]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'n8n workflow development',
+    stack: ['n8n', 'Automation', 'Workflow automation'],
+  },
+  {
+    id: 'no-code-n8n-automation',
+    index: '11',
+    category: 'n8n workflows',
+    title: 'No-code n8n automation',
+    description: 'A no-code automation project built around n8n workflows.',
+    tags: ['n8n', 'AI automation', 'No-code'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-nocode-activity-7474229557496315904-_nX9',
+    icon: Workflow,
+    tone: 'bg-[#d9e5ed]',
+    accent: 'text-[#28617d]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'n8n workflow development / no-code automation',
+    stack: ['n8n', 'AI automation', 'No-code'],
+  },
+  {
+    id: 'ai-lead-qualification',
+    index: '12',
+    category: 'Lead qualification',
+    title: 'AI lead qualification',
+    description: 'An AI automation workflow focused on lead qualification.',
+    tags: ['n8n', 'AI automation', 'Lead qualification'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_n8n-aiautomation-leadqualification-activity-7473251498660077568-wmWi',
+    icon: DatabaseZap,
+    tone: 'bg-[#f0d8d2]',
+    accent: 'text-[#af4d3c]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'Lead management automation / n8n workflow development',
+    stack: ['n8n', 'AI automation', 'Lead qualification'],
+  },
+  {
+    id: 'ai-agents-automation',
+    index: '13',
+    category: 'AI agents',
+    title: 'AI agents + automation',
+    description: 'An AI agents project connected to an automation workflow.',
+    tags: ['AI', 'AI agents', 'Automation'],
+    url: 'https://www.linkedin.com/posts/saydul-haque-sayeed-6a8a18368_ai-aiagents-automation-activity-7472356082074554368-g1qb',
+    icon: Bot,
+    tone: 'bg-[#e1e8dc]',
+    accent: 'text-[#4b7851]',
+    detail: 'Project-specific context is limited to the available LinkedIn project post.',
+    role: 'AI agent development / automation',
+    stack: ['AI', 'AI agents', 'Automation'],
   },
 ];
 
@@ -172,7 +312,7 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
           <span className="font-display text-[15px] font-bold tracking-[-.03em]">Saydul Haque Sayeed</span>
         </button>
         <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex">
-          {[['home', 'Home'], ['about', 'About'], ['services', 'Services'], ['work', 'Work'], ['journey', 'Journey'], ['contact', 'Contact']].map(([id, label]) => (
+          {[['home', 'Home'], ['about', 'About'], ['services', 'Services'], ['work', 'Work'], ['journey', 'Journey'], ['resume', 'Resume'], ['contact', 'Contact']].map(([id, label]) => (
             <button key={id} type="button" onClick={() => scrollToId(id)} data-testid={`button-nav-${id}`} className={`nav-link text-[11px] font-bold uppercase tracking-[.14em] ${active === id ? 'active' : ''}`}>
               {label}
             </button>
@@ -224,7 +364,7 @@ function Hero() {
         </h1>
         <div className="hero-load-delay-2 mt-9 grid max-w-[690px] gap-8 md:grid-cols-[1fr_240px] md:items-end">
           <p className="max-w-[510px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">
-            I’m Saydul — a Computer Science &amp; AI student building AI automations, connected workflows, and modern web experiences for people who care about how the pieces fit together.
+            I’m Saydul — an AI Automation Engineer &amp; Web Developer and Computer Science &amp; AI student building AI automations, connected workflows, and modern web experiences for people who care about how the pieces fit together.
           </p>
           <button type="button" onClick={() => scrollToId('work')} data-testid="button-hero-work" className="button-with-arrow group flex w-fit items-center gap-3 border-b-2 border-[hsl(var(--accent))] pb-2 text-sm font-bold">
             Explore the archive <ArrowDown className="button-arrow h-4 w-4 transition-transform group-hover:translate-y-1" />
@@ -284,8 +424,8 @@ function About() {
           <div>
             <p className="max-w-[760px] text-[clamp(1.45rem,2.8vw,2.45rem)] leading-[1.24] tracking-[-.04em]">I’m a Computer Science &amp; AI student and AI Automation Engineer / Web Developer.</p>
             <p className="mt-7 max-w-[620px] text-base leading-8 text-[hsl(var(--muted-foreground))]">I work where software, automation, and people’s daily decisions meet. That means learning the shape of a process, then building the small technical pieces that help it move with less friction.</p>
-            <div className="mt-9 flex flex-wrap gap-2">
-              {['Computer Science & AI', 'AI Automation Engineer', 'Web Developer'].map((label) => <span key={label} className="rounded-full border border-[hsl(var(--border))] px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">{label}</span>)}
+             <div className="mt-9 flex flex-wrap gap-2">
+               {['Computer Science & AI Student', 'AI Automation Engineer', 'AI Agent Builder', 'n8n Workflow Developer', 'Web Developer'].map((label) => <span key={label} className="rounded-full border border-[hsl(var(--border))] px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">{label}</span>)}
             </div>
           </div>
         </div>
@@ -330,9 +470,10 @@ function Services() {
 
 function Skills() {
   const groups: Array<[string, string[]]> = [
-    ['Automation', ['AI automation', 'AI agents', 'n8n workflow development']],
-    ['Integration', ['REST APIs', 'Webhooks', 'CRM automation']],
-    ['Product surface', ['E-commerce automation', 'Modern web development']],
+    ['Automation', ['n8n Workflow Development', 'AI Workflow Automation', 'AI Agent Development', 'GoHighLevel Automation']],
+    ['Integration', ['REST API & Webhook Integration', 'CRM & Lead Management Automation', 'Prompt Engineering']],
+    ['Development', ['Website & Funnel Development', 'Python', 'Java', 'C++']],
+    ['Productivity', ['Microsoft Office / Excel']],
   ];
   return (
     <section id="skills" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-32">
@@ -341,7 +482,7 @@ function Skills() {
           <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">03 / Skills &amp; technology</p><h2 className="mt-5 max-w-[350px] font-display text-4xl font-semibold leading-[1.03] tracking-[-.055em] sm:text-5xl">The parts I like connecting.</h2></div>
           <div>
             <p className="max-w-[650px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">My stack is less about collecting tools and more about understanding how they pass context between one another.</p>
-            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--border))] md:grid-cols-3">
+             <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--border))] md:grid-cols-2 lg:grid-cols-4">
               {groups.map(([title, items]) => <div key={title} className="bg-[hsl(var(--card))] p-5"><p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--primary))]">{title}</p><div className="mt-8 space-y-3">{items.map((item) => <div key={item} className="flex items-start gap-2 text-sm"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--accent))]" />{item}</div>)}</div></div>)}
             </div>
           </div>
@@ -399,7 +540,7 @@ function ProjectArt({ project }: { project: Project }) {
 
 function Work({ onSelect }: { onSelect: (project: Project) => void }) {
   const [activeFilter, setActiveFilter] = useState('All');
-  const filters = ['All', 'AI systems', 'Operations', 'Commerce', 'Web development'];
+  const filters = ['All', 'AI automation', 'AI agents', 'n8n workflows', 'Business automation', 'Lead qualification', 'Web development'];
   const visibleProjects = useMemo(() => activeFilter === 'All' ? projects : projects.filter((project) => project.category === activeFilter), [activeFilter]);
   return (
     <section id="work" className="bg-[hsl(var(--muted)/.55)] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
@@ -415,13 +556,13 @@ function Work({ onSelect }: { onSelect: (project: Project) => void }) {
         </Reveal>
         <Reveal delay={1}>
           <div className="mt-16">
-            <div className="mb-5 flex items-center justify-between"><h3 className="font-display text-2xl font-semibold tracking-[-.04em]">Featured projects</h3><span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">selected / 02</span></div>
-            <div className="grid gap-5 lg:grid-cols-2">
-              {projects.slice(0, 2).map((project) => (
-                <button type="button" key={project.id} onClick={() => onSelect(project)} data-testid={`card-featured-project-${project.id}`} className="project-card group grid w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left sm:grid-cols-[.9fr_1.1fr]">
+             <div className="mb-5 flex items-center justify-between"><h3 className="font-display text-2xl font-semibold tracking-[-.04em]">Featured projects</h3><span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">selected / 04</span></div>
+             <div className="grid gap-5 lg:grid-cols-2">
+               {projects.slice(0, 4).map((project) => (
+                 <div key={project.id} role="button" tabIndex={0} onClick={() => onSelect(project)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(project); }} data-testid={`card-featured-project-${project.id}`} className="project-card group grid w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left sm:grid-cols-[.9fr_1.1fr]">
                   <ProjectArt project={project} />
-                  <div className="flex flex-col justify-between p-6"><div><p className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">Featured / {project.index}</p><h4 className="mt-3 font-display text-2xl font-semibold tracking-[-.04em]">{project.title}</h4><p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.description}</p></div><span className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]">Open case study <ArrowUpRight className="h-4 w-4 text-[hsl(var(--accent))] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></span></div>
-                </button>
+                   <div className="flex flex-col justify-between p-6"><div><p className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">Featured / {project.index}</p><h4 className="mt-3 font-display text-2xl font-semibold tracking-[-.04em]">{project.title}</h4><p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.description}</p></div><div className="mt-8 flex flex-wrap items-center gap-4"><button type="button" onClick={(event) => { event.stopPropagation(); onSelect(project); }} className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]">Open case study <ArrowUpRight className="h-4 w-4 text-[hsl(var(--accent))] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></button><a href={project.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} data-testid={`link-featured-project-${project.id}`} className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--primary))]">View Project <ExternalLink className="h-3.5 w-3.5" /></a></div></div>
+                 </div>
               ))}
             </div>
           </div>
@@ -442,7 +583,7 @@ function Work({ onSelect }: { onSelect: (project: Project) => void }) {
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {visibleProjects.map((project, index) => (
             <Reveal key={project.id} delay={(index % 3) + 1}>
-              <button type="button" onClick={() => onSelect(project)} data-testid={`card-project-${project.id}`} className="project-card group block w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left">
+               <div role="button" tabIndex={0} onClick={() => onSelect(project)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(project); }} data-testid={`card-project-${project.id}`} className="project-card group block w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left">
                 <ProjectArt project={project} />
                 <div className="p-6 sm:p-7">
                   <div className="flex items-start justify-between gap-4">
@@ -451,14 +592,15 @@ function Work({ onSelect }: { onSelect: (project: Project) => void }) {
                   </div>
                   <p className="mt-4 max-w-[420px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.description}</p>
                   <div className="mt-6 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="rounded-md bg-[hsl(var(--muted))] px-2 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] text-[hsl(var(--muted-foreground))]">{tag}</span>)}</div>
+                   <a href={project.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} data-testid={`link-project-${project.id}`} className="mt-7 flex w-fit items-center gap-2 border-b border-[hsl(var(--accent))] pb-1 text-xs font-bold uppercase tracking-[.12em] transition-colors hover:text-[hsl(var(--primary))]">View Project <ExternalLink className="h-3.5 w-3.5" /></a>
                 </div>
-              </button>
+               </div>
             </Reveal>
           ))}
         </div>
-        <Reveal>
-          <div className="mt-10 flex items-center gap-3 border-t border-[hsl(var(--border))] pt-6 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]"><span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" /> Project specifics are intentionally left as placeholders until the archive is populated.</div>
-        </Reveal>
+         <Reveal>
+           <div className="mt-10 flex items-center gap-3 border-t border-[hsl(var(--border))] pt-6 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]"><span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" /> Project descriptions are intentionally limited to the information available in each LinkedIn post.</div>
+         </Reveal>
       </div>
     </section>
   );
@@ -466,9 +608,9 @@ function Work({ onSelect }: { onSelect: (project: Project) => void }) {
 
 function Journey() {
   const entries = [
-    ['01', 'AI Automation Engineer / Web Developer', 'Experience details placeholder', 'Role scope, dates, and organization can be added here.'],
-    ['02', 'Computer Science & AI student', 'Education journey placeholder', 'Institution, dates, and focus areas can be added here.'],
-    ['03', 'Selected professional journey', 'Archive context placeholder', 'Additional experience details can be added here when available.'],
+    ['01', 'Project-based AI automation work', 'Hands-on technical experience', 'AI automation, AI agents, n8n workflow development, and connected systems are presented as project-based work.'],
+    ['02', 'Hands-on web development', 'Practical technical experience', 'Modern websites, funnels, and interfaces are included as practical development work.'],
+    ['03', 'AI Automation Engineer & Web Developer', 'Current professional positioning', 'A focused practice across AI workflow automation, integrations, and modern web development.'],
   ];
   return (
     <section id="journey" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
@@ -494,13 +636,25 @@ function Journey() {
 }
 
 function Education() {
+  const education = [
+    ['B.Sc. in Computer Science and Engineering', 'Leading University, Sylhet', '2024 – Present'],
+    ['HSC — Science', 'Scholarshome Majortila College, Sylhet', '2021 – 2023'],
+    ['SSC — Science', 'Barohal Ehia High School', '2019 – 2021'],
+  ];
   return (
     <section id="education" className="bg-[hsl(var(--secondary)/.22)] px-5 py-24 sm:px-8 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-[1240px]">
         <Reveal>
-          <div className="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-end">
-            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">07 / Education</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Learning in public,<br />details pending.</h2></div>
-            <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background)/.65)] p-6 sm:p-8"><div className="flex items-center justify-between"><span className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">Current education</span><span className="font-mono-custom text-[10px] text-[hsl(var(--muted-foreground))]">placeholder</span></div><h3 className="mt-8 font-display text-2xl font-semibold">Computer Science &amp; AI</h3><p className="mt-3 max-w-[470px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Institution, location, dates, and specific coursework are content placeholders until those details are provided.</p></div>
+          <div className="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:items-start">
+            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">07 / Education</p><h2 className="mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">The foundation<br />behind the work.</h2></div>
+            <div className="divide-y divide-[hsl(var(--border))] rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background)/.65)]">
+              {education.map(([degree, institution, dates], index) => (
+                <div key={degree} className="grid gap-3 p-6 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8">
+                  <div><p className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">0{index + 1}</p><h3 className="mt-3 font-display text-xl font-semibold">{degree}</h3><p className="mt-2 text-sm text-[hsl(var(--muted-foreground))]">{institution}</p></div>
+                  <span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">{dates}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
@@ -565,7 +719,7 @@ function Contact() {
   const [copied, setCopied] = useState(false);
   const [socialNotice, setSocialNotice] = useState('');
   const copyEmail = async () => {
-    await navigator.clipboard?.writeText('contact@example.com');
+    await navigator.clipboard?.writeText('haquesaydul200411@gmai.com');
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
@@ -579,25 +733,20 @@ function Contact() {
         <Reveal>
           <div className="grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-24">
             <div>
-              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">04 / Contact</p>
+              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">12 / Contact</p>
               <h2 className="mt-6 max-w-[620px] font-display text-[clamp(3.2rem,7vw,6.8rem)] font-semibold leading-[.9] tracking-[-.075em]">Have a system<br />worth <span className="text-[hsl(var(--secondary))]">untangling?</span></h2>
               <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell me what you’re building, where the repetition is, or what currently feels harder than it should.</p>
               <div className="mt-10 space-y-4 text-sm">
-                <button type="button" onClick={copyEmail} data-testid="button-copy-email" className="group flex items-center gap-3 text-left text-[hsl(var(--background)/.9)] transition-colors hover:text-[hsl(var(--secondary))]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /> {copied ? 'Email copied' : 'contact@example.com'} {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5 opacity-50 transition-opacity group-hover:opacity-100" />}</button>
-                <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><MapPin className="h-4 w-4 text-[hsl(var(--secondary))]" /> Location placeholder</div>
-                <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><Clock3 className="h-4 w-4 text-[hsl(var(--secondary))]" /> Response time placeholder</div>
+                <div className="flex items-center gap-3 text-[hsl(var(--background)/.9)]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /><a href="mailto:haquesaydul200411@gmai.com" data-testid="link-email" className="transition-colors hover:text-[hsl(var(--secondary))]">haquesaydul200411@gmai.com</a><button type="button" onClick={copyEmail} data-testid="button-copy-email" aria-label="Copy email address" className="ml-1 opacity-60 transition-opacity hover:opacity-100">{copied ? <Check className="h-3.5 w-3.5 text-[hsl(var(--secondary))]" /> : <Copy className="h-3.5 w-3.5" />}</button></div>
+                <a href="tel:+8801616094323" data-testid="link-phone" className="flex items-center gap-3 text-[hsl(var(--background)/.72)] transition-colors hover:text-[hsl(var(--secondary))]"><Phone className="h-4 w-4 text-[hsl(var(--secondary))]" /> +8801616094323</a>
+                <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><Clock3 className="h-4 w-4 text-[hsl(var(--secondary))]" /> Response time not provided</div>
               </div>
               <div className="mt-10 border-t border-[hsl(var(--background)/.16)] pt-6">
                 <p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--background)/.42)]">Social links</p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {[
-                    ['LinkedIn', Linkedin],
-                    ['GitHub', Github],
-                  ].map(([label, Icon]) => (
-                    <button type="button" key={label as string} onClick={() => setSocialNotice(`${label as string} URL placeholder`)} data-testid={`button-social-${(label as string).toLowerCase()}`} className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]">
-                      <Icon className="h-3.5 w-3.5" /> {label as string} <ExternalLink className="h-3 w-3 opacity-50" />
-                    </button>
-                  ))}
+                  <a href="https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/" target="_blank" rel="noreferrer" data-testid="link-social-linkedin" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"><Linkedin className="h-3.5 w-3.5" /> LinkedIn <ExternalLink className="h-3 w-3 opacity-50" /></a>
+                  <a href="https://github.com/Saydulhaque11" target="_blank" rel="noreferrer" data-testid="link-social-github" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"><Github className="h-3.5 w-3.5" /> GitHub <ExternalLink className="h-3 w-3 opacity-50" /></a>
+                  <button type="button" onClick={() => setSocialNotice('Instagram public profile URL placeholder')} data-testid="button-social-instagram" className="flex items-center gap-2 rounded-full border border-dashed border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.55)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"><span className="text-xs font-bold">@</span> Instagram <span className="font-mono-custom text-[9px] uppercase">soon</span></button>
                 </div>
                 {socialNotice && <p className="mt-3 font-mono-custom text-[10px] uppercase tracking-[.1em] text-[hsl(var(--secondary))]" data-testid="status-social-placeholder">{socialNotice}</p>}
               </div>
@@ -648,11 +797,12 @@ function CaseStudy({ project, onClose, onChange }: { project: Project; onClose: 
           <div className="absolute bottom-8 right-10 hidden font-mono-custom text-[10px] uppercase tracking-[.15em] opacity-60 sm:block">case study / {project.index}</div>
         </div>
         <div className="p-6 sm:p-10">
-          <div className="flex flex-wrap items-center gap-3 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]"><span className="text-[hsl(var(--accent))]">{project.category}</span><span>·</span><span>Placeholder archive entry</span></div>
+           <div className="flex flex-wrap items-center gap-3 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]"><span className="text-[hsl(var(--accent))]">{project.category}</span><span>·</span><span>LinkedIn archive entry</span></div>
           <h2 className="mt-5 font-display text-4xl font-semibold tracking-[-.06em] sm:text-6xl">{project.title}</h2>
           <p className="mt-5 max-w-[640px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">{project.description}</p>
           <div className="mt-12 grid gap-8 border-y border-[hsl(var(--border))] py-8 sm:grid-cols-[1fr_1.3fr]"><div><p className="font-mono-custom text-[10px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">Role / focus</p><p className="mt-3 text-sm font-semibold">{project.role}</p></div><div><p className="font-mono-custom text-[10px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">Tools in scope</p><div className="mt-3 flex flex-wrap gap-2">{project.stack.map((item) => <span key={item} className="rounded-md bg-[hsl(var(--muted))] px-2.5 py-1.5 font-mono-custom text-[10px]">{item}</span>)}</div></div></div>
           <div className="mt-10 rounded-xl bg-[hsl(var(--muted)/.62)] p-5 sm:p-6"><p className="font-mono-custom text-[10px] uppercase tracking-[.13em] text-[hsl(var(--accent))]">Context note</p><p className="mt-3 max-w-[630px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.detail} Add the specific brief, decisions, implementation notes, and outcomes here when they are available.</p></div>
+           <a href={project.url} target="_blank" rel="noreferrer" data-testid={`link-case-study-${project.id}`} className="mt-8 flex w-fit items-center gap-2 rounded-full bg-[hsl(var(--foreground))] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))] transition-transform hover:-translate-y-0.5">View Project on LinkedIn <ExternalLink className="h-3.5 w-3.5" /></a>
           <div className="mt-8 flex items-center justify-between"><button type="button" onClick={() => move(-1)} data-testid="button-case-previous-bottom" className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]"><ChevronLeft className="h-4 w-4" /> Previous</button><span className="font-mono-custom text-[10px] text-[hsl(var(--muted-foreground))]">{String(currentIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><button type="button" onClick={() => move(1)} data-testid="button-case-next-bottom" className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]">Next <ChevronRight className="h-4 w-4" /></button></div>
         </div>
       </div>
