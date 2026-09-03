@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Saydul Haque Sayeed — Portfolio"
+description = "A premium personal portfolio for Saydul Haque Sayeed, a Computer Science & AI student and AI Automation Engineer / Web Developer showcasing automation systems, AI agents, API integrations, and modern web development work."
+version = "1.0.0"
+id = "artifacts/saydul-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25260
+
+[services.development]
+run = "pnpm --filter @workspace/saydul-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/saydul-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/saydul-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25260"
+BASE_PATH = "/"

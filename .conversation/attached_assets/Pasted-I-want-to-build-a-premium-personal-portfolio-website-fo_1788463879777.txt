@@ -1,0 +1,59 @@
+I want to build a premium personal portfolio website for Saydul Haque Sayeed.
+
+He is a Computer Science & AI student and an AI Automation Engineer / Web Developer focused on AI automation, n8n workflow development, AI agents, business process automation, CRM automation, REST API and webhook integrations, e-commerce automation, and modern website development.
+
+This is a PERSONAL professional portfolio, not a generic agency website.
+
+The primary goals are:
+1. Introduce Saydul professionally.
+2. Clearly communicate what he does.
+3. Showcase his real automation and development projects.
+4. Build credibility through projects, skills, education and experience.
+5. Allow potential clients, recruiters and collaborators to understand his capabilities.
+6. Make it easy for visitors to contact him.
+7. Drive visitors toward viewing projects and starting a conversation.
+
+Plan the complete website structure before building it.
+
+The website should include:
+
+- Hero section
+- About Me
+- Services / What I Do
+- Skills & Technology Stack
+- Featured Projects
+- All Projects with filtering
+- Interactive project case-study presentation
+- Experience & Professional Journey
+- Education
+- My Process
+- Testimonials / References
+- Resume section
+- Contact section
+- Social links
+- Strong conversion-focused CTAs
+
+The visual direction should be premium, minimal, modern and technology-focused.
+
+Use a clean light background, strong typography, professional spacing, subtle borders, elegant cards and subtle animations.
+
+Avoid excessive gradients, excessive colors, flashy effects, unnecessary complexity and generic template styling.
+
+The website must feel like a high-end personal professional portfolio.
+
+Prioritize:
+- storytelling
+- user experience
+- readability
+- responsive design
+- mobile-first thinking
+- accessibility
+- fast performance
+- clear navigation
+- strong conversion paths
+
+Do NOT start with random design decisions.
+
+First create the complete information architecture, section hierarchy, navigation structure, user journey and positioning strategy.
+
+Explain the planned structure before implementing the full website.
