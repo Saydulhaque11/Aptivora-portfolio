@@ -1,0 +1,1 @@
+- [Resend testing mode](resend-testing.md) — Resend test sending is limited to the connected account inbox until a sending domain is verified.

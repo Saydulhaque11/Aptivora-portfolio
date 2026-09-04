@@ -18,3 +18,8 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[userenv]
+
+[userenv.shared]
+CONTACT_RECIPIENT_EMAIL = "haquesaydul200411@gmail.com"

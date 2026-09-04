@@ -713,19 +713,44 @@ function Resume() {
 }
 
 function Contact() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [projectType, setProjectType] = useState('');
+  const [website, setWebsite] = useState('');
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
   const [socialNotice, setSocialNotice] = useState('');
   const copyEmail = async () => {
-    await navigator.clipboard?.writeText('haquesaydul200411@gmai.com');
+    await navigator.clipboard?.writeText('haquesaydul200411@gmail.com');
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (email.trim() && message.trim()) setSent(true);
+    setError('');
+    setSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, projectType, website }),
+      });
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Your message could not be delivered. Please try again.');
+      }
+
+      setSent(true);
+    } catch (submissionError) {
+      setError(submissionError instanceof Error ? submissionError.message : 'Your message could not be delivered. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
   return (
     <section id="contact" className="bg-[hsl(var(--foreground))] px-5 py-24 text-[hsl(var(--background))] sm:px-8 lg:px-10 lg:py-36">
@@ -737,7 +762,7 @@ function Contact() {
               <h2 className="mt-6 max-w-[620px] font-display text-[clamp(3.2rem,7vw,6.8rem)] font-semibold leading-[.9] tracking-[-.075em]">Have a system<br />worth <span className="text-[hsl(var(--secondary))]">untangling?</span></h2>
               <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell me what you’re building, where the repetition is, or what currently feels harder than it should.</p>
               <div className="mt-10 space-y-4 text-sm">
-                <div className="flex items-center gap-3 text-[hsl(var(--background)/.9)]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /><a href="mailto:haquesaydul200411@gmai.com" data-testid="link-email" className="transition-colors hover:text-[hsl(var(--secondary))]">haquesaydul200411@gmai.com</a><button type="button" onClick={copyEmail} data-testid="button-copy-email" aria-label="Copy email address" className="ml-1 opacity-60 transition-opacity hover:opacity-100">{copied ? <Check className="h-3.5 w-3.5 text-[hsl(var(--secondary))]" /> : <Copy className="h-3.5 w-3.5" />}</button></div>
+                <div className="flex items-center gap-3 text-[hsl(var(--background)/.9)]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /><a href="mailto:haquesaydul200411@gmail.com" data-testid="link-email" className="transition-colors hover:text-[hsl(var(--secondary))]">haquesaydul200411@gmail.com</a><button type="button" onClick={copyEmail} data-testid="button-copy-email" aria-label="Copy email address" className="ml-1 opacity-60 transition-opacity hover:opacity-100">{copied ? <Check className="h-3.5 w-3.5 text-[hsl(var(--secondary))]" /> : <Copy className="h-3.5 w-3.5" />}</button></div>
                 <a href="tel:+8801616094323" data-testid="link-phone" className="flex items-center gap-3 text-[hsl(var(--background)/.72)] transition-colors hover:text-[hsl(var(--secondary))]"><Phone className="h-4 w-4 text-[hsl(var(--secondary))]" /> +8801616094323</a>
                 <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><Clock3 className="h-4 w-4 text-[hsl(var(--secondary))]" /> Response time not provided</div>
               </div>
@@ -753,14 +778,18 @@ function Contact() {
             </div>
             <form onSubmit={submit} className="rounded-2xl border border-[hsl(var(--background)/.2)] bg-[hsl(var(--background)/.06)] p-6 sm:p-8">
               {sent ? (
-                <div className="flex min-h-[320px] flex-col justify-center"><div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--secondary))] text-[hsl(var(--foreground))]"><Check className="h-5 w-5" /></div><h3 className="font-display text-3xl font-semibold">Message prepared.</h3><p className="mt-3 max-w-[330px] text-sm leading-6 text-[hsl(var(--background)/.6)]">This form is a front-end placeholder. Connect it to your preferred inbox to complete the handoff.</p><button type="button" onClick={() => { setSent(false); setEmail(''); setMessage(''); }} data-testid="button-send-another" className="mt-8 flex w-fit items-center gap-2 border-b border-[hsl(var(--secondary))] pb-1 text-xs font-bold uppercase tracking-[.13em]">Send another <ArrowRight className="h-3.5 w-3.5" /></button></div>
+                <div className="flex min-h-[320px] flex-col justify-center" aria-live="polite"><div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--secondary))] text-[hsl(var(--foreground))]"><Check className="h-5 w-5" /></div><h3 className="font-display text-3xl font-semibold">Thanks — your message has been sent.</h3><p className="mt-3 max-w-[330px] text-sm leading-6 text-[hsl(var(--background)/.6)]">Your note has been delivered to Saydul’s inbox. He’ll be able to reply directly to your email address.</p><button type="button" onClick={() => { setSent(false); setName(''); setEmail(''); setMessage(''); setProjectType(''); setWebsite(''); setError(''); }} data-testid="button-send-another" className="mt-8 flex w-fit items-center gap-2 border-b border-[hsl(var(--secondary))] pb-1 text-xs font-bold uppercase tracking-[.13em]">Send another <ArrowRight className="h-3.5 w-3.5" /></button></div>
               ) : (
                 <>
                   <div className="mb-8 flex items-center justify-between"><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--background)/.5)]">start a thread</span><MessageSquareText className="h-5 w-5 text-[hsl(var(--secondary))]" /></div>
-                  <label className="block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Your email</span><input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="input-contact-email" placeholder="you@company.com" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
-                  <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">What are you thinking about?</span><textarea required value={message} onChange={(event) => setMessage(event.target.value)} data-testid="textarea-contact-message" placeholder="A workflow, an agent, a web experience..." rows={4} className="mt-3 w-full resize-none border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
-                  <button type="submit" data-testid="button-submit-contact" className="button-with-arrow mt-9 flex w-full items-center justify-between rounded-xl bg-[hsl(var(--secondary))] px-5 py-4 text-left text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--foreground))] transition-transform hover:-translate-y-1">Send a note <Send className="button-arrow h-4 w-4" /></button>
-                  <p className="mt-4 text-[10px] leading-5 text-[hsl(var(--background)/.38)]">Front-end placeholder — no message will be delivered until an inbox is connected.</p>
+                   <label className="block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Your name</span><input required type="text" value={name} onChange={(event) => setName(event.target.value)} data-testid="input-contact-name" placeholder="Your name" maxLength={120} autoComplete="name" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
+                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Your email</span><input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="input-contact-email" placeholder="you@company.com" maxLength={254} autoComplete="email" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
+                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Project type <span className="normal-case tracking-normal text-[hsl(var(--background)/.35)]">(optional)</span></span><select value={projectType} onChange={(event) => setProjectType(event.target.value)} data-testid="select-contact-project-type" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none focus:border-[hsl(var(--secondary))]"><option value="" className="text-[hsl(var(--foreground))]">Not sure yet</option><option value="AI & Automation" className="text-[hsl(var(--foreground))]">AI &amp; Automation</option><option value="Website" className="text-[hsl(var(--foreground))]">Website</option><option value="Mobile App" className="text-[hsl(var(--foreground))]">Mobile App</option><option value="CRM & Sales" className="text-[hsl(var(--foreground))]">CRM &amp; Sales</option><option value="Design & Branding" className="text-[hsl(var(--foreground))]">Design &amp; Branding</option><option value="Video & Content" className="text-[hsl(var(--foreground))]">Video &amp; Content</option></select></label>
+                   <label className="sr-only" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} /></label>
+                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">What are you thinking about?</span><textarea required value={message} onChange={(event) => setMessage(event.target.value)} data-testid="textarea-contact-message" placeholder="A workflow, an agent, a web experience..." rows={4} maxLength={5000} className="mt-3 w-full resize-none border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
+                   {error && <p role="alert" data-testid="status-contact-error" className="mt-5 rounded-lg border border-[hsl(var(--secondary)/.45)] bg-[hsl(var(--secondary)/.1)] px-3 py-3 text-xs leading-5 text-[hsl(var(--background)/.85)]">{error}</p>}
+                   <button type="submit" disabled={submitting} data-testid="button-submit-contact" className="button-with-arrow mt-9 flex w-full items-center justify-between rounded-xl bg-[hsl(var(--secondary))] px-5 py-4 text-left text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--foreground))] transition-transform hover:-translate-y-1 disabled:cursor-wait disabled:opacity-60">{submitting ? 'Sending…' : 'Send a note'} <Send className="button-arrow h-4 w-4" /></button>
+                   <p className="mt-4 text-[10px] leading-5 text-[hsl(var(--background)/.38)]">Your message is sent securely through the portfolio backend.</p>
                 </>
               )}
             </form>
