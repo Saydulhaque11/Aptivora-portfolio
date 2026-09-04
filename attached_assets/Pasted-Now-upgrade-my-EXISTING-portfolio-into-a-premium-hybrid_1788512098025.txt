@@ -1,0 +1,724 @@
+Now upgrade my EXISTING portfolio into a premium hybrid:
+
+PERSONAL PORTFOLIO + AUTOMEXA DIGITAL SYSTEMS AGENCY.
+
+IMPORTANT:
+DO NOT rebuild the website from scratch.
+DO NOT replace the current visual design.
+DO NOT remove working features.
+DO NOT break the existing Resend contact form integration.
+DO NOT remove the existing 13 projects or their LinkedIn links.
+
+The current visual design is already good. PRESERVE IT.
+
+Your job is to upgrade the CONTENT, INFORMATION ARCHITECTURE, SERVICES, AGENCY POSITIONING, PROJECT PRESENTATION and USER JOURNEY.
+
+==================================================
+BRAND
+==================================================
+
+Agency Name:
+AUTOMEXA
+
+Positioning:
+Digital Systems & Automation
+
+Founder / Technical Expert:
+Saydul Haque Sayeed
+
+Title:
+AI Automation Engineer & Web Developer
+
+The website must communicate:
+
+Saydul is the technical expert behind the systems, while Automexa is the agency capable of building complete digital systems for small businesses.
+
+The visitor should think:
+
+"This person is an expert, and his agency can build the complete digital system my business needs."
+
+Do not make the website feel like a generic agency template.
+
+==================================================
+HERO
+==================================================
+
+Keep the current hero visual design and typography.
+
+Change the messaging to:
+
+Headline:
+"We build digital systems that make businesses work smarter."
+
+Supporting text:
+"AI automation, websites, CRM systems, mobile apps, design, and content — connected into one practical digital ecosystem."
+
+Small personal/agency identity line:
+"Saydul Haque Sayeed · Founder, Automexa"
+
+Primary CTA:
+"Start a Project"
+
+Secondary CTA:
+"Explore Our Work"
+
+Third CTA where appropriate:
+"Book a Call"
+
+Keep the current premium editorial visual style.
+
+==================================================
+NAVIGATION
+==================================================
+
+Use:
+
+Home
+Services
+Work
+Solutions
+About
+Process
+Journey
+Contact
+
+Primary navigation CTA:
+"Start a Project"
+
+Desktop:
+Show full navigation.
+
+Mobile:
+Keep the existing hamburger menu.
+
+==================================================
+CAPABILITY STRIP
+==================================================
+
+Add a clean capability strip after the hero:
+
+AI & Business Automation
+Web Development
+Mobile Apps
+CRM & Sales Systems
+Design & Branding
+Video & Content
+
+==================================================
+ABOUT
+==================================================
+
+Keep the personal portfolio identity.
+
+Create a section introducing Saydul.
+
+Suggested positioning:
+
+"Hi, I'm Saydul — an AI Automation Engineer & Web Developer focused on building practical digital systems."
+
+Explain that Saydul works across:
+
+AI automation
+AI agents
+workflow systems
+CRM automation
+web development
+APIs and integrations
+business process automation
+
+Then introduce Automexa as the broader digital systems agency.
+
+Do not invent clients, employers, awards, statistics or achievements.
+
+==================================================
+SERVICES
+==================================================
+
+Create exactly 6 core service categories.
+
+01 — AI & Business Automation
+
+AI-powered workflows
+Business process automation
+AI agents
+Customer support automation
+Lead automation
+Email automation
+E-commerce automation
+Internal business automation
+
+Outcome:
+Reduce repetitive work and connect business operations.
+
+02 — Web Development
+
+Business websites
+Landing pages
+E-commerce websites
+Web applications
+Dashboards
+API-connected websites
+Conversion-focused digital experiences
+
+Outcome:
+Turn a website into a useful business asset.
+
+03 — Mobile App Development
+
+Business apps
+Customer-facing apps
+Internal tools
+Booking/order apps
+MVP applications
+
+Outcome:
+Turn business ideas into usable digital products.
+
+04 — CRM & Sales Systems
+
+Lead capture
+Lead qualification
+Sales pipelines
+Follow-ups
+Appointment systems
+Customer management
+Automated communication
+
+Outcome:
+Keep leads organized and reduce missed follow-ups.
+
+05 — Design & Branding
+
+Brand identity
+UI/UX design
+Website design
+Social media design
+Marketing materials
+Presentation design
+Visual systems
+
+Outcome:
+Create a consistent and credible brand.
+
+06 — Video & Content
+
+Short-form content
+Promotional videos
+Product videos
+Motion graphics
+Social media content
+AI-assisted content production
+
+Outcome:
+Build a repeatable content system.
+
+Each service card should have:
+- number
+- icon
+- title
+- description
+- capabilities
+- business outcome
+- subtle hover animation
+
+==================================================
+SOLUTIONS / INDUSTRIES
+==================================================
+
+Create a section:
+
+"Built for ambitious small businesses."
+
+Target industries:
+
+E-commerce
+Real Estate
+Dental & Medical
+Marketing Agencies
+Recruitment Agencies
+Local Businesses
+Startups
+Other Small Businesses
+
+Do NOT claim existing clients.
+
+Present these as industries Automexa can serve.
+
+For each industry explain the type of digital system Automexa can build.
+
+Examples:
+
+E-commerce:
+Orders, customer communication, inventory, follow-ups and operational workflows.
+
+Real Estate:
+Lead capture, qualification, follow-up and CRM systems.
+
+Dental & Medical:
+Inquiry handling, appointment workflows and customer communication.
+
+Marketing Agencies:
+Lead management, client workflows and reporting systems.
+
+Recruitment:
+Candidate workflows, job management and communication systems.
+
+Local Businesses:
+Website, lead capture, CRM and automated communication.
+
+Startups:
+Websites, MVPs, automation, CRM and connected digital systems.
+
+==================================================
+WORK / PORTFOLIO
+==================================================
+
+VERY IMPORTANT:
+
+KEEP ALL 13 EXISTING PROJECTS.
+
+Do not delete them.
+
+Homepage:
+Show 3–4 strongest projects as Featured Work.
+
+Then:
+"Explore All Work"
+
+Create the full archive with filters such as:
+
+All
+AI & Automation
+AI Agents
+Business Systems
+Web / Digital
+
+Every project must remain clickable.
+
+Every project must use its actual LinkedIn project URL already stored in the project.
+
+Do not replace LinkedIn links.
+
+Use:
+"View Project on LinkedIn →"
+
+==================================================
+CASE STUDY FORMAT
+==================================================
+
+When opening a project, show:
+
+01 — Problem
+What problem was being solved?
+
+02 — Solution
+What system was designed?
+
+03 — Automation
+What process was automated?
+
+04 — Tools / Technology
+What technologies were used?
+
+05 — Result / Outcome
+Describe the demonstrated capability or actual outcome.
+
+06 — LinkedIn Proof
+"View Project on LinkedIn →"
+
+IMPORTANT:
+
+Do NOT invent:
+clients
+revenue
+percentages
+hours saved
+performance metrics
+testimonials
+business results
+
+If a real measurable result is unavailable, describe the demonstrated capability instead.
+
+==================================================
+PROCESS
+==================================================
+
+Create:
+
+"How We Work"
+
+Use this exact 8-step process:
+
+01 — DISCOVER
+Understand the business, goals, challenges and current workflow.
+
+02 — AUDIT
+Analyze existing processes and identify bottlenecks and repetitive work.
+
+03 — STRATEGIZE
+Identify opportunities for automation, websites, CRM, AI or custom development.
+
+04 — BUILD
+Turn the strategy into practical systems, workflows, websites, applications or AI solutions.
+
+05 — INTEGRATE
+Connect relevant systems, APIs, CRM, website and communication channels.
+
+06 — TEST
+Test workflows, integrations, user flows and edge cases.
+
+07 — LAUNCH
+Deploy and hand over the completed system.
+
+08 — SUPPORT
+Provide ongoing optimization, maintenance and future improvements when required.
+
+Make this visually interactive using the existing design language.
+
+Add:
+- timeline
+- scroll reveal
+- active step state
+- subtle transitions
+
+==================================================
+WHY AUTOMEXA
+==================================================
+
+Create a section around:
+
+"Technology is only useful when it solves the right problem."
+
+Supporting ideas:
+
+Understand the problem.
+Design the right system.
+Connect the moving parts.
+Build practical solutions.
+Focus on useful outcomes.
+
+Avoid generic agency marketing language.
+
+==================================================
+PERSONAL JOURNEY
+==================================================
+
+Keep the personal portfolio side.
+
+Use verified existing CV information.
+
+Education:
+
+B.Sc. Computer Science & Engineering
+Leading University, Sylhet
+2024–Present
+
+HSC — Science
+Scholarshome Majortila College
+2021–2023
+
+SSC — Science
+Barohal Ehia High School
+2019–2021
+
+Technical journey:
+
+AI Automation
+Workflow Development
+AI Agents
+CRM Automation
+Web Development
+Business Systems
+
+Do not invent employment history.
+
+==================================================
+SKILLS
+==================================================
+
+Keep the existing skills section.
+
+Include:
+
+n8n Workflow Development
+AI Workflow Automation
+AI Agent Development
+GoHighLevel Automation
+REST API & Webhook Integration
+CRM & Lead Management Automation
+Prompt Engineering
+Website & Funnel Development
+Python
+Java
+C++
+Microsoft Office / Excel
+
+Present technologies as supporting capabilities.
+
+Do not make the website look like a technology-only developer portfolio.
+
+==================================================
+RESUME
+==================================================
+
+Keep the real uploaded CV.
+
+Keep:
+View Resume
+Download Resume
+
+Do not replace the actual CV with placeholder content.
+
+==================================================
+CONTACT
+==================================================
+
+DO NOT BREAK THE CURRENT RESEND INTEGRATION.
+
+The existing contact form should remain functional.
+
+Fields:
+
+Name
+Email
+Project Type
+Message
+
+Project Type options:
+
+AI & Automation
+Website
+Mobile App
+CRM & Sales
+Design & Branding
+Video & Content
+Not Sure Yet
+
+CTA:
+"Send a Note"
+
+Final flow:
+
+Visitor
+→ Contact Form
+→ Backend/API
+→ Resend
+→ Saydul's inbox
+
+Recipient:
+haquesaydul200411@gmai.com
+
+IMPORTANT:
+Do not expose the Resend API key in frontend code.
+
+Keep:
+- validation
+- loading state
+- success state
+- error state
+- anti-abuse/rate limiting
+
+Never show success if delivery fails.
+
+==================================================
+CTA STRATEGY
+==================================================
+
+Use:
+
+Start a Project
+Book a Call
+Get a Quote
+Explore Our Work
+
+Do NOT add pricing tables.
+
+Do NOT invent package prices.
+
+==================================================
+SOCIAL
+==================================================
+
+LinkedIn:
+https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/
+
+GitHub:
+https://github.com/Saydulhaque11
+
+Do not show the Instagram Accounts Center URL.
+
+Only show Instagram if a valid public profile URL is available.
+
+==================================================
+FOOTER
+==================================================
+
+AUTOMEXA
+
+Digital Systems & Automation
+
+"Built by Saydul Haque Sayeed."
+
+Links:
+Home
+Services
+Work
+Solutions
+About
+Process
+Journey
+Contact
+
+Social:
+LinkedIn
+GitHub
+
+CTA:
+"Start a Project →"
+
+==================================================
+DESIGN
+==================================================
+
+PRESERVE THE CURRENT DESIGN.
+
+Keep:
+
+Warm cream/off-white background
+Charcoal typography
+Teal accent
+Subtle orange/apricot accent
+Editorial typography
+Thin borders
+Premium whitespace
+Current card system
+Current animation language
+Current visual identity
+
+Do NOT introduce:
+
+neon colors
+cyberpunk design
+generic SaaS gradients
+excessive glassmorphism
+huge 3D illustrations
+generic AI graphics
+fake statistics
+fake client logos
+
+==================================================
+ANIMATION
+==================================================
+
+Keep the current premium animation system.
+
+Use:
+
+smooth page entrance
+staggered text reveals
+scroll reveals
+subtle parallax
+project hover interactions
+project filtering transitions
+case study transitions
+process timeline animation
+button micro-interactions
+smooth navigation
+
+Animations should feel:
+premium
+cinematic
+intentional
+
+Avoid excessive movement.
+
+Respect prefers-reduced-motion.
+
+==================================================
+RESPONSIVE
+==================================================
+
+Ensure perfect:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+No horizontal overflow.
+
+Check:
+
+Hero
+Navigation
+Services
+Solutions
+Projects
+Case studies
+Process
+Journey
+Contact
+Footer
+
+==================================================
+SEO
+==================================================
+
+Update title to:
+
+"Saydul Haque Sayeed — AI Automation Engineer & Founder of Automexa"
+
+Description:
+
+"Saydul Haque Sayeed builds AI-powered automation, websites, CRM systems, mobile apps and connected digital systems for small businesses through Automexa."
+
+==================================================
+FINAL QUALITY CHECK
+==================================================
+
+Before finishing:
+
+Inspect the existing code first.
+
+Reuse existing components and styles.
+
+Do not rebuild unnecessarily.
+
+Do not remove existing working functionality.
+
+Do not remove the 13 projects.
+
+Do not break LinkedIn links.
+
+Do not break Resume download.
+
+Do not break Resend/contact form.
+
+Run:
+- typecheck
+- production build
+- navigation test
+- project filter test
+- LinkedIn link test
+- resume test
+- contact form test
+- mobile test
+- desktop test
+- console error check
+
+DO NOT PUBLISH AUTOMATICALLY.
+
+When finished, report:
+
+1. What changed
+2. What was preserved
+3. What was tested
+4. Any remaining issues
+
+The final result must feel like:
+
+PREMIUM PERSONAL PORTFOLIO
++
+AUTOMEXA DIGITAL SYSTEMS AGENCY
+
+Not a generic agency template.

@@ -1,0 +1,887 @@
+I want to upgrade my existing website into a premium hybrid:
+
+PERSONAL PORTFOLIO + DIGITAL SYSTEMS / AI AUTOMATION AGENCY.
+
+IMPORTANT:
+Do NOT rebuild the website from scratch.
+Do NOT replace the current visual design.
+Do NOT remove the existing animations, typography, spacing, color system, project archive, or overall visual identity unless absolutely necessary.
+
+The current design is already strong and should remain the foundation.
+
+The goal is to upgrade the INFORMATION ARCHITECTURE, CONTENT, FEATURES, and AGENCY POSITIONING while preserving the existing design language.
+
+==================================================
+1. BRAND STRUCTURE
+==================================================
+
+Agency Name:
+AUTOMEXA
+
+Agency positioning:
+Digital Systems & Automation
+
+Founder / Personal Expert:
+Saydul Haque Sayeed
+
+Personal title:
+AI Automation Engineer & Web Developer
+
+Personal positioning:
+Computer Science & AI Student · AI Automation Engineer · Web Developer
+
+The website must communicate:
+
+"Saydul is the technical expert, while Automexa is the digital systems agency capable of building complete digital systems for small businesses."
+
+The visitor should immediately understand:
+
+PERSONAL EXPERT + AGENCY CAPABILITY.
+
+Do NOT make it look like a generic agency website.
+
+Do NOT overuse the word "agency".
+
+Maintain a strong personal identity throughout the website.
+
+==================================================
+2. CORE BRAND MESSAGE
+==================================================
+
+Primary hero headline:
+
+"We build digital systems that make businesses work smarter."
+
+Supporting text:
+
+"AI automation, websites, CRM systems, mobile apps, design, and content — connected into one practical digital ecosystem."
+
+Primary CTA:
+"Start a Project"
+
+Secondary CTA:
+"Explore Our Work"
+
+Additional CTA:
+"Book a Call"
+
+The hero should clearly communicate both:
+- Saydul as the expert
+- Automexa as the agency/system-building capability
+
+For example, include a subtle line such as:
+
+"Saydul Haque Sayeed · Founder, Automexa"
+
+Do not make this visually dominant over the main hero.
+
+==================================================
+3. VISUAL DESIGN — PRESERVE CURRENT DESIGN
+==================================================
+
+Keep the current design language.
+
+Preserve:
+- Warm cream / off-white backgrounds
+- Charcoal typography
+- Teal accent
+- Subtle orange/apricot accent
+- Editorial typography
+- Thin borders
+- Premium whitespace
+- Rounded but refined containers
+- Minimal visual noise
+- Cinematic but purposeful animation
+- Current typography hierarchy
+- Current card style
+- Current navigation style where appropriate
+- Existing responsive behavior
+
+Do NOT introduce:
+- Generic SaaS gradients
+- Neon cyberpunk UI
+- Excessive glassmorphism
+- Huge 3D objects
+- Generic AI illustrations
+- Overly colorful sections
+- Fake statistics
+- Fake client logos
+- Fake testimonials
+- Fake revenue numbers
+- Fake performance metrics
+
+The design should feel:
+premium + technical + personal + credible + modern.
+
+==================================================
+4. NAVIGATION
+==================================================
+
+Upgrade the navigation to:
+
+Home
+Services
+Work
+Solutions
+About
+Process
+Journey
+Contact
+
+Primary navigation CTA:
+"Start a Project"
+
+On desktop:
+Show the full navigation.
+
+On mobile:
+Use the existing hamburger/menu interaction.
+
+Keep navigation smooth and premium.
+
+==================================================
+5. HOMEPAGE STRUCTURE
+==================================================
+
+Create the following logical flow:
+
+01 — HERO
+
+02 — CAPABILITIES STRIP
+
+03 — ABOUT SAYDUL / PERSONAL EXPERT
+
+04 — AUTOMEXA SERVICES
+
+05 — SOLUTIONS FOR SMALL BUSINESSES
+
+06 — FEATURED WORK
+
+07 — HOW WE WORK
+
+08 — WHY AUTOMEXA
+
+09 — PERSONAL JOURNEY
+
+10 — ALL WORK / PROJECT ARCHIVE
+
+11 — FINAL CTA
+
+12 — CONTACT
+
+13 — FOOTER
+
+Do not make the page unnecessarily long.
+Use strong visual hierarchy and section transitions.
+
+==================================================
+6. CAPABILITIES STRIP
+==================================================
+
+Immediately after the hero, create a clean capability strip:
+
+AI & Automation
+Web Development
+Mobile Apps
+CRM & Sales
+Design & Branding
+Video & Content
+
+This should visually establish Automexa's full capability.
+
+==================================================
+7. ABOUT SAYDUL
+==================================================
+
+Create a strong personal section.
+
+Title:
+"Built by a technical mind. Designed around real business problems."
+
+Introduce:
+
+"Hi, I'm Saydul — an AI Automation Engineer & Web Developer focused on building practical digital systems."
+
+Explain that Saydul works across:
+- AI automation
+- workflow systems
+- AI agents
+- websites
+- CRM systems
+- APIs and integrations
+- business process automation
+
+Mention that Automexa extends this capability into a broader digital systems service.
+
+Important:
+Do not invent employment history, clients, achievements, awards, or statistics.
+
+Add CTA:
+"More About Me"
+
+==================================================
+8. SERVICES
+==================================================
+
+Create a premium service section called:
+
+"What We Build"
+
+Automexa has exactly these 6 core service categories:
+
+01. 🤖 AI & Business Automation
+
+Description:
+AI-powered workflows, business process automation, AI agents, customer support automation, lead automation, email automation, e-commerce automation, and internal workflow systems.
+
+02. 🌐 Web Development
+
+Description:
+Business websites, landing pages, e-commerce websites, web applications, dashboards, and API-connected digital experiences.
+
+03. 📱 Mobile App Development
+
+Description:
+Business applications, customer-facing apps, internal tools, booking/order systems, and MVP applications.
+
+04. 📈 CRM & Sales Systems
+
+Description:
+Lead capture, qualification, sales pipelines, follow-ups, appointment systems, customer management, and automated communication.
+
+05. 🎨 Design & Branding
+
+Description:
+Brand identity, UI/UX design, website design, social media design, marketing materials, presentations, and visual systems.
+
+06. 🎬 Video & Content
+
+Description:
+Short-form content, promotional videos, product videos, motion graphics, social media content, and AI-assisted content production.
+
+Each service card should include:
+- Number
+- Icon
+- Service title
+- Short description
+- What is included
+- Business outcome
+
+Add subtle hover interactions.
+
+==================================================
+9. BUSINESS OUTCOMES
+==================================================
+
+Do not just describe technical services.
+
+For every service, communicate business value.
+
+Examples:
+
+Automation:
+"Reduce repetitive work and connect your operations."
+
+Web:
+"Turn your digital presence into a useful business asset."
+
+CRM:
+"Keep leads organized and follow up consistently."
+
+Apps:
+"Turn business ideas into usable digital products."
+
+Design:
+"Create a consistent and credible brand."
+
+Content:
+"Build a repeatable content engine."
+
+Do not promise guaranteed results.
+
+==================================================
+10. TARGET INDUSTRIES / SOLUTIONS
+==================================================
+
+Create a section:
+
+"Built for ambitious small businesses."
+
+Target industries:
+
+E-commerce
+Real Estate
+Dental & Medical
+Marketing Agencies
+Recruitment Agencies
+Local Businesses
+Startups
+Other Small Businesses
+
+Present them as solution cards.
+
+Each card should explain how Automexa can help that business.
+
+Examples:
+
+E-commerce:
+Orders, customer communication, inventory, follow-ups and operational workflows.
+
+Real Estate:
+Lead capture, qualification, follow-up and CRM systems.
+
+Dental & Medical:
+Inquiry handling, appointment workflows and customer communication.
+
+Marketing Agencies:
+Lead management, client workflows and reporting systems.
+
+Recruitment:
+Candidate workflows, job management and communication systems.
+
+Local Businesses:
+Website, lead capture, CRM and automated customer communication.
+
+Startups:
+Websites, MVPs, automation, CRM and connected digital systems.
+
+Do not claim existing clients in these industries.
+
+Frame them as target solutions / capabilities.
+
+==================================================
+11. FEATURED WORK
+==================================================
+
+Keep the existing project archive.
+
+Show 3–4 strongest projects as Featured Work.
+
+Each featured project must be clickable.
+
+Use the actual LinkedIn project URL supplied for that project.
+
+Do NOT replace LinkedIn proof with fake case study URLs.
+
+Each project should have:
+
+Project title
+Category
+Problem
+Solution
+Automation
+Technology / tools
+Outcome
+LinkedIn Proof
+
+Structure:
+
+PROBLEM
+What problem was being solved?
+
+SOLUTION
+What system was designed?
+
+AUTOMATION
+What process was automated?
+
+TOOLS / TECHNOLOGY
+What technologies were used?
+
+OUTCOME
+What practical improvement did the project aim to create or demonstrate?
+
+LINKEDIN PROOF
+"View Project on LinkedIn →"
+
+IMPORTANT:
+Do NOT invent client names.
+Do NOT invent business results.
+Do NOT invent percentages.
+Do NOT invent time savings.
+Do NOT invent revenue.
+Do NOT invent implementation details that are not supported by the existing project information.
+
+Where an exact result is unavailable, describe the demonstrated capability instead.
+
+==================================================
+12. ALL 13 PROJECTS
+==================================================
+
+Preserve ALL 13 existing projects.
+
+Do not remove any project.
+
+Create a premium project archive with filters such as:
+
+All
+AI & Automation
+AI Agents
+Business Systems
+Web / Digital
+
+Every project should contain its actual LinkedIn project link.
+
+Use the 13 LinkedIn URLs already provided in the project context.
+
+The LinkedIn links are the proof/source for each project.
+
+Make every project card clickable.
+
+Do not show raw long URLs.
+
+Use:
+"View on LinkedIn →"
+
+==================================================
+13. CASE STUDY INTERACTION
+==================================================
+
+When a user clicks a project:
+
+Open the existing case-study modal/page interaction if already present.
+
+Upgrade it to display:
+
+Project
+Category
+Problem
+Solution
+Automation
+Technology
+Outcome
+LinkedIn Proof
+
+Use smooth transitions.
+
+Do not create fake content.
+
+If information is unavailable:
+use concise wording such as:
+
+"Project demonstration focused on..."
+
+rather than inventing details.
+
+==================================================
+14. PROCESS
+==================================================
+
+Create a section:
+
+"How We Work"
+
+Use exactly this 8-step process:
+
+01 — DISCOVER
+Understand the business, goals, challenges and current workflow.
+
+02 — AUDIT
+Analyze existing processes and identify bottlenecks and repetitive work.
+
+03 — STRATEGIZE
+Identify opportunities for automation, websites, CRM, AI or custom development.
+
+04 — BUILD
+Turn the strategy into practical systems, workflows, websites, applications or AI solutions.
+
+05 — INTEGRATE
+Connect the relevant systems, APIs, CRM, website and communication channels.
+
+06 — TEST
+Test workflows, integrations, user flows and edge cases.
+
+07 — LAUNCH
+Deploy and hand over the completed system.
+
+08 — SUPPORT
+Provide ongoing optimization, maintenance and future improvements when required.
+
+Make this section visually interactive with:
+- timeline
+- scroll reveal
+- active step state
+- subtle animations
+
+==================================================
+15. WHY AUTOMEXA
+==================================================
+
+Create a section explaining why someone should work with Automexa.
+
+Use these themes:
+
+Understand the problem
+Build practical systems
+Connect the moving parts
+Focus on useful outcomes
+
+Possible copy:
+
+"Technology is only useful when it solves the right problem."
+
+"We don't start with tools. We start with the business problem, then design the system around it."
+
+This should differentiate Automexa from generic development agencies.
+
+==================================================
+16. PERSONAL JOURNEY
+==================================================
+
+Keep the personal portfolio aspect.
+
+Create:
+
+"My Journey"
+
+Include only verified information already available in the current project/CV.
+
+Education:
+B.Sc. Computer Science & Engineering
+Leading University, Sylhet
+2024–Present
+
+HSC:
+Science
+Scholarshome Majortila College
+2021–2023
+
+SSC:
+Science
+Barohal Ehia High School
+2019–2021
+
+Professional/technical journey can highlight progression through:
+AI Automation
+Workflow Development
+AI Agents
+CRM Automation
+Web Development
+Business Systems
+
+Do not invent employers or client experience.
+
+==================================================
+17. SKILLS / TECHNOLOGY
+==================================================
+
+Keep a professional skills section.
+
+Skills include:
+
+n8n Workflow Development
+AI Workflow Automation
+AI Agent Development
+GoHighLevel Automation
+REST API & Webhook Integration
+CRM & Lead Management Automation
+Prompt Engineering
+Website & Funnel Development
+Python
+Java
+C++
+Microsoft Office / Excel
+
+Present technology as supporting capability, not the main selling point.
+
+Business outcomes should remain more prominent than tools.
+
+==================================================
+18. RESUME
+==================================================
+
+Keep the real uploaded CV.
+
+Add:
+
+"View Resume"
+"Download Resume"
+
+Make sure the existing real CV file remains connected.
+
+Do not replace it with placeholder content.
+
+==================================================
+19. CONTACT
+==================================================
+
+Keep the current premium contact section.
+
+Form fields:
+
+Name
+Email
+What are you thinking about?
+
+Optional project type:
+AI & Automation
+Website
+Mobile App
+CRM & Sales
+Design & Branding
+Video & Content
+Not Sure Yet
+
+CTA:
+"Send a Note"
+
+The final flow must be:
+
+Visitor
+→ Contact Form
+→ Portfolio Backend/API
+→ Resend
+→ Saydul's inbox
+
+The configured recipient should be:
+
+haquesaydul200411@gmai.com
+
+IMPORTANT:
+The recipient email should be configured securely in the backend/server environment.
+
+Never expose the Resend API key in frontend code.
+
+Show:
+- loading state
+- successful submission state
+- error state
+- validation
+- basic anti-abuse/rate limiting
+
+After successful submission:
+
+"Thanks — your message has been sent."
+
+Do not falsely show success if Resend/API delivery fails.
+
+==================================================
+20. CONTACT CTA STRATEGY
+==================================================
+
+Use multiple CTAs throughout the website:
+
+Start a Project
+Book a Call
+Get a Quote
+Explore Our Work
+
+Primary CTA:
+Start a Project
+
+Secondary:
+Explore Our Work
+
+Do NOT add pricing tables.
+
+Do NOT display fake package prices.
+
+==================================================
+21. SOCIAL LINKS
+==================================================
+
+Use the verified personal links already available:
+
+LinkedIn:
+https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/
+
+GitHub:
+https://github.com/Saydulhaque11
+
+Instagram:
+Only show Instagram if a valid public profile URL is available.
+Do not show a broken Accounts Center URL.
+
+==================================================
+22. FOOTER
+==================================================
+
+Footer should combine:
+
+AUTOMEXA
+Digital Systems & Automation
+
+"Built by Saydul Haque Sayeed."
+
+Links:
+Home
+Services
+Work
+About
+Process
+Journey
+Contact
+
+Social:
+LinkedIn
+GitHub
+Instagram if available
+
+CTA:
+"Start a Project →"
+
+==================================================
+23. ANIMATION
+==================================================
+
+Keep the premium animation style.
+
+Add/refine:
+
+- smooth page load
+- elegant hero entrance
+- staggered text reveals
+- scroll-based section reveals
+- subtle parallax where appropriate
+- refined project hover interactions
+- project filtering animation
+- case study transitions
+- animated process timeline
+- smooth navigation
+- button micro-interactions
+- subtle section transitions
+- scroll progress indicator if appropriate
+
+Animation must feel:
+cinematic
+premium
+intentional
+
+Avoid:
+bouncing
+excessive scaling
+flashy effects
+constant movement
+slow animations that hurt usability
+
+Respect:
+prefers-reduced-motion
+
+==================================================
+24. RESPONSIVE DESIGN
+==================================================
+
+Make sure everything works perfectly on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+On desktop:
+show full navigation.
+
+On mobile:
+hamburger menu.
+
+Check:
+- hero typography
+- service cards
+- project cards
+- case study modal
+- process timeline
+- forms
+- buttons
+- footer
+- social links
+
+No horizontal overflow.
+
+==================================================
+25. SEO / META
+==================================================
+
+Update metadata to reflect both personal and agency positioning.
+
+Suggested title:
+
+"Saydul Haque Sayeed — AI Automation Engineer & Founder of Automexa"
+
+Suggested description:
+
+"Saydul Haque Sayeed builds AI-powered automation, websites, CRM systems, mobile apps and connected digital systems for small businesses through Automexa."
+
+Use appropriate Open Graph metadata.
+
+==================================================
+26. IMPORTANT CONTENT RULES
+==================================================
+
+Never invent:
+
+- clients
+- testimonials
+- revenue
+- statistics
+- awards
+- years of experience
+- performance percentages
+- business results
+- company logos
+- fake case study outcomes
+
+If information is unavailable, omit it or clearly describe the project as a demonstration/project.
+
+==================================================
+27. FINAL UX GOAL
+==================================================
+
+The website should make three things immediately clear:
+
+1. SAYDUL IS A REAL TECHNICAL EXPERT.
+
+2. AUTOMEXA IS THE AGENCY / BUSINESS SYSTEM BRAND.
+
+3. AUTOMEXA CAN BUILD COMPLETE DIGITAL SYSTEMS FOR SMALL BUSINESSES.
+
+The ideal visitor reaction:
+
+"This person understands technology and automation, and his agency can build the complete digital system my business needs."
+
+==================================================
+28. CRITICAL IMPLEMENTATION RULE
+==================================================
+
+Before changing anything:
+
+Inspect the existing project structure and current implementation.
+
+Reuse existing:
+- components
+- styles
+- animations
+- project data
+- case-study system
+- contact UI
+- responsive components
+
+Only modify what is necessary.
+
+Do not duplicate components unnecessarily.
+
+Do not break existing functionality.
+
+Do not remove existing project data.
+
+Do not replace the current design with a generic agency template.
+
+After implementation:
+- run type checks
+- run production build
+- test all navigation
+- test project filtering
+- test LinkedIn links
+- test contact form
+- test Resend delivery
+- test resume download
+- test mobile layout
+- test desktop layout
+- check console for errors
+
+Do not publish automatically.
+
+Stop after implementation and report:
+1. What was changed
+2. What was preserved
+3. What was tested
+4. Any remaining issue

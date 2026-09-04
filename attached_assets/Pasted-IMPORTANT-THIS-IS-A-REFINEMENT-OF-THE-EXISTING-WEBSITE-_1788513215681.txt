@@ -1,0 +1,565 @@
+IMPORTANT — THIS IS A REFINEMENT OF THE EXISTING WEBSITE.
+
+Do NOT rebuild the website.
+Do NOT change the current visual design language.
+Do NOT replace the existing typography, colors, spacing, animations, card style, navigation style, or overall premium aesthetic.
+
+I want to make several specific content and structure changes based on the current implementation.
+
+==================================================
+1. CHANGE "ABOUT SAYDUL" INTO "ABOUT AUTOMEXA"
+==================================================
+
+There is currently an "ABOUT SAYDUL" section.
+
+REMOVE the current personal About section from this position.
+
+Replace it with:
+
+"ABOUT AUTOMEXA"
+
+This section should introduce the agency, not Saydul personally.
+
+Use this headline:
+
+"AUTOMEXA HELPS BUSINESSES WORK SMARTER."
+
+Use the same large editorial typography treatment currently used in the website.
+
+Use this supporting copy:
+
+"Automexa is a digital systems and automation agency founded by Saydul Haque Sayeed. We help small businesses simplify their operations, build modern digital experiences, and connect the systems that keep their business moving — from automation and websites to CRM, mobile applications, design, and content."
+
+Then add:
+
+"I personally lead every project, combining technical problem-solving with a practical understanding of how businesses operate. Our goal is simple: build useful digital systems that solve real problems instead of adding unnecessary complexity."
+
+IMPORTANT:
+The copy should clearly communicate:
+
+Automexa = the agency
+Saydul = founder / owner and technical lead
+
+Do NOT make this section sound like a personal biography.
+
+Add CTA:
+
+"Explore Services →"
+
+==================================================
+2. ABOUT AUTOMEXA VISUAL STRUCTURE
+==================================================
+
+Keep the visual structure inspired by the existing design and the current premium editorial style.
+
+Use:
+
+LEFT SIDE:
+About Automexa headline
+Agency description
+Founder-led statement
+Explore Services CTA
+
+RIGHT SIDE:
+A clean information / capability grid.
+
+Do NOT use fake client statistics.
+
+You may use factual capability-based information such as:
+
+"6 Core Services"
+"13+ Projects"
+"8 Target Industries"
+"Founder-Led"
+
+For "8 Target Industries", make it clear these are industries Automexa is built to support, NOT existing client industries.
+
+Do NOT claim:
+- 120+ clients
+- €40M revenue
+- years of experience
+- countries served
+- client revenue
+- fake business results
+
+Those numbers belong to another reference website and must NOT be copied.
+
+==================================================
+3. REMOVE EDUCATION SECTION FROM THE MAIN WEBSITE
+==================================================
+
+There is currently a dedicated:
+
+"EDUCATION"
+
+section with:
+
+B.Sc.
+HSC
+SSC
+
+REMOVE this entire Education section from the public website.
+
+Do not display the education timeline/card section anywhere on the homepage.
+
+The website should feel more like:
+
+PERSONAL EXPERT + AGENCY
+
+rather than:
+
+STUDENT PORTFOLIO.
+
+If education information is still needed for the resume, keep it only inside the actual downloadable CV/resume.
+
+Do NOT delete the actual uploaded CV file.
+
+==================================================
+4. REMOVE DIRECT TOOL / SOFTWARE BRAND NAMES FROM PUBLIC-FACING CONTENT
+==================================================
+
+This is VERY IMPORTANT.
+
+I previously requested that the website should NOT directly mention specific software/tool/platform names.
+
+Remove direct tool names from public-facing website content.
+
+For example, do NOT publicly write:
+
+"n8n"
+"GoHighLevel"
+specific automation platform names
+specific CRM product names
+specific AI software names
+specific workflow software names
+
+Instead use professional capability language.
+
+Examples:
+
+Instead of:
+"n8n Workflow Development"
+
+Use:
+"Advanced Workflow Automation"
+
+Instead of:
+"GoHighLevel Automation"
+
+Use:
+"CRM & Sales Automation"
+
+Instead of:
+"REST API & Webhook Integration"
+
+Use:
+"System & API Integration"
+
+Instead of:
+"n8n AI Agent"
+
+Use:
+"AI Agent Systems"
+
+Instead of:
+"n8n E-commerce Automation"
+
+Use:
+"E-commerce Process Automation"
+
+Instead of:
+"AI tools"
+
+Use:
+"AI-powered systems"
+
+Instead of:
+"automation platform"
+
+Use:
+"workflow automation systems"
+
+The website should sell the RESULT and CAPABILITY, not the software used to build it.
+
+==================================================
+5. UPDATE THE SKILLS SECTION
+==================================================
+
+Do not remove the Skills section completely.
+
+Transform it from a tool-heavy developer skills section into a capability-focused section.
+
+Use categories such as:
+
+AI Systems
+Workflow Automation
+Business Process Automation
+AI Agent Development
+CRM & Sales Automation
+System Integration
+Web Development
+Web & Funnel Experiences
+E-commerce Systems
+Prompt & AI System Design
+
+Programming capabilities can remain where useful:
+
+Python
+Java
+C++
+
+But do not make programming languages the main focus.
+
+The overall message should be:
+
+"We build systems."
+
+Not:
+
+"We know many tools."
+
+==================================================
+6. UPDATE ALL PROJECT CONTENT
+==================================================
+
+Keep ALL 13 existing projects.
+
+Do NOT delete any project.
+
+Do NOT delete any LinkedIn proof link.
+
+However, audit all public-facing project titles, descriptions, tags and case-study content.
+
+If a project currently contains direct software/tool names, replace those references with capability-based terminology.
+
+For example:
+
+"Built with n8n"
+→
+"Built as a connected workflow automation system"
+
+"n8n AI Agent"
+→
+"AI Agent System"
+
+"Google Sheets integration"
+→
+"Structured data workflow"
+
+"Gmail automation"
+→
+"Automated email workflow"
+
+Specific tools may remain in internal code/data if technically necessary.
+
+But they should NOT be prominently displayed in the public-facing portfolio.
+
+==================================================
+7. CASE STUDY FORMAT
+==================================================
+
+Keep the existing case study interaction.
+
+Every project should follow:
+
+PROBLEM
+What problem was being solved?
+
+SOLUTION
+What system was designed?
+
+AUTOMATION
+What process was improved or automated?
+
+CAPABILITIES
+What type of technology/system capability was used?
+
+OUTCOME
+What practical outcome or demonstrated capability did the project provide?
+
+PROOF
+"View Project on LinkedIn →"
+
+Do NOT invent:
+
+client names
+revenue
+statistics
+percentages
+hours saved
+years of experience
+fake results
+
+If no measurable result exists, describe the demonstrated capability.
+
+==================================================
+8. SERVICES
+==================================================
+
+Keep exactly these six services:
+
+01 — AI & Business Automation
+
+02 — Web Development
+
+03 — Mobile App Development
+
+04 — CRM & Sales Systems
+
+05 — Design & Branding
+
+06 — Video & Content
+
+Do not add unnecessary extra services.
+
+Each service should focus on:
+
+What we build
+What problem it solves
+What business outcome it supports
+
+Do not make service cards tool-specific.
+
+==================================================
+9. AGENCY POSITIONING
+==================================================
+
+Throughout the website, establish this relationship:
+
+AUTOMEXA
+Digital Systems & Automation
+
+Founded and led by:
+
+Saydul Haque Sayeed
+AI Automation Engineer & Web Developer
+
+The website should communicate:
+
+"Saydul is the technical expert, and Automexa is the agency through which complete digital systems are delivered."
+
+The agency can combine:
+
+AI
+Automation
+Web
+Mobile
+CRM
+Design
+Content
+
+into one connected digital system.
+
+==================================================
+10. TARGET AUDIENCE
+==================================================
+
+Keep the target market focused on:
+
+Small Businesses
+
+Supported industries:
+
+E-commerce
+Real Estate
+Dental & Medical
+Marketing Agencies
+Recruitment Agencies
+Local Businesses
+Startups
+Other Small Businesses
+
+Do not claim these are existing clients.
+
+Present them as:
+
+"Industries we can build for"
+
+or
+
+"Businesses we help"
+
+==================================================
+11. PROCESS
+==================================================
+
+Keep the existing 8-step process:
+
+01 — DISCOVER
+02 — AUDIT
+03 — STRATEGIZE
+04 — BUILD
+05 — INTEGRATE
+06 — TEST
+07 — LAUNCH
+08 — SUPPORT
+
+Keep the premium timeline interaction.
+
+Make the descriptions business-focused.
+
+Avoid technical tool names.
+
+==================================================
+12. PERSONAL SECTION
+==================================================
+
+Do NOT remove Saydul completely.
+
+The website is still a personal portfolio + agency.
+
+Keep a smaller personal section such as:
+
+"Meet the Founder"
+
+or
+
+"Built by Saydul"
+
+Use:
+
+Saydul Haque Sayeed
+AI Automation Engineer & Web Developer
+
+Explain that he founded Automexa and leads the technical direction.
+
+This section should come AFTER the agency-focused sections, not replace the agency About section.
+
+==================================================
+13. EDUCATION
+==================================================
+
+Again:
+
+REMOVE the dedicated Education section from the homepage.
+
+Do not show:
+
+B.Sc.
+HSC
+SSC
+
+as a large public website section.
+
+Education remains available inside the downloadable CV.
+
+==================================================
+14. REMOVE GENERIC / FALSE AGENCY CLAIMS
+==================================================
+
+Do not use claims such as:
+
+"120+ clients"
+"40M revenue"
+"8+ years experience"
+"7 countries"
+"100+ businesses served"
+
+unless they are factually verified.
+
+Use capability-based statements instead.
+
+==================================================
+15. DESIGN PRESERVATION
+==================================================
+
+This is critical.
+
+KEEP:
+
+Current warm cream background
+Current charcoal typography
+Current teal accent
+Current orange/coral accent
+Current editorial typography
+Current whitespace
+Current borders
+Current card design
+Current navigation
+Current animations
+Current project archive
+Current case-study interaction
+Current responsive behavior
+
+Do not turn the website into a copy of another website.
+
+The reference website is only for understanding the TYPE of agency information architecture.
+
+Our design must remain original and consistent with the existing Saydul portfolio.
+
+==================================================
+16. CONTACT
+==================================================
+
+DO NOT BREAK THE EXISTING RESEND CONTACT FORM.
+
+Keep the working flow:
+
+Visitor
+→ Contact Form
+→ Backend
+→ Email delivery
+→ Saydul's inbox
+
+Keep validation, loading state, success state and error state.
+
+Do not expose any email service API credentials in frontend code.
+
+==================================================
+17. FINAL WEBSITE IDENTITY
+==================================================
+
+After these changes, the website should feel like:
+
+PREMIUM PERSONAL PORTFOLIO
++
+AUTOMEXA DIGITAL SYSTEMS AGENCY
+
+The visitor should immediately understand:
+
+"Saydul is the expert behind Automexa."
+
+"Automexa builds complete digital systems for small businesses."
+
+"Instead of selling isolated technical services, Automexa connects AI, automation, websites, CRM, mobile applications, design and content into practical business systems."
+
+==================================================
+18. FINAL QUALITY CHECK
+==================================================
+
+Before finishing:
+
+- Check every section
+- Remove the old "About Saydul" agency-positioning content
+- Add "About Automexa"
+- Remove the Education section
+- Remove direct software/tool names from public-facing content
+- Keep all 13 projects
+- Keep all LinkedIn links
+- Keep case studies
+- Keep Services
+- Keep Process
+- Keep personal founder section
+- Keep Resume
+- Keep Contact/Resend integration
+- Check desktop
+- Check tablet
+- Check mobile
+- Check navigation
+- Check project filtering
+- Check LinkedIn links
+- Check contact form
+- Check console errors
+- Run production build
+
+DO NOT PUBLISH AUTOMATICALLY.
+
+After finishing, report exactly:
+
+1. Sections changed
+2. Sections removed
+3. Tool/software names replaced
+4. Project links preserved
+5. Contact system preserved
+6. Tests completed
+7. Remaining issues
