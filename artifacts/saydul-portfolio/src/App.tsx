@@ -20,6 +20,7 @@ import {
   Github,
   HeartPulse,
   House,
+  Instagram,
   Linkedin,
   Mail,
   Megaphone,
@@ -319,7 +320,13 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-[hsl(var(--border)/.7)] bg-[hsl(var(--background)/.88)] backdrop-blur-xl">
       <div className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between px-5 sm:px-8 lg:px-10">
         <button type="button" onClick={() => scrollToId('home')} data-testid="button-brand-home" className="group flex items-center gap-3 text-left">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[hsl(var(--primary))] text-sm font-bold text-[hsl(var(--primary-foreground))] shadow-[4px_4px_0_hsl(var(--secondary))]">SH</span>
+          <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-[hsl(var(--background))] shadow-[4px_4px_0_hsl(var(--secondary))]">
+  <img
+    src="/images/logo.png"
+    alt="Automexa Logo"
+    className="h-full w-full object-contain"
+  />
+</span>
           <span><span className="block font-mono-custom text-[9px] font-bold uppercase tracking-[.15em] text-[hsl(var(--primary))]">Automexa</span><span className="block font-display text-[15px] font-bold tracking-[-.03em]">Saydul Haque Sayeed</span></span>
         </button>
         <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex">
@@ -377,11 +384,36 @@ function Hero() {
           <p className="max-w-[510px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">
             AI automation, websites, CRM systems, mobile apps, design, and content — connected into one practical digital ecosystem.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <button type="button" onClick={() => scrollToId('contact')} data-testid="button-hero-start" className="button-with-arrow group flex w-fit items-center gap-3 rounded-full bg-[hsl(var(--foreground))] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))]">Start a Project <ArrowUpRight className="button-arrow h-4 w-4" /></button>
-            <button type="button" onClick={() => scrollToId('work')} data-testid="button-hero-work" className="button-with-arrow group flex w-fit items-center gap-3 border-b-2 border-[hsl(var(--accent))] pb-2 text-sm font-bold">Explore Our Work <ArrowDown className="button-arrow h-4 w-4 transition-transform group-hover:translate-y-1" /></button>
-            <button type="button" onClick={() => scrollToId('contact')} data-testid="button-hero-book" className="flex w-fit items-center gap-2 border-b border-[hsl(var(--border))] pb-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--foreground))]">Book a Call</button>
-          </div>
+          <div className="grid grid-cols-2 gap-x-3 gap-y-3 sm:flex sm:flex-wrap sm:gap-4">
+  <button
+    type="button"
+    onClick={() => scrollToId('contact')}
+    data-testid="button-hero-start"
+    className="button-with-arrow group flex w-fit items-center gap-3 rounded-full bg-[hsl(var(--foreground))] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))] lg:hidden"
+  >
+    Start a Project
+    <ArrowUpRight className="button-arrow h-4 w-4" />
+  </button>
+
+  <button
+    type="button"
+    onClick={() => scrollToId('work')}
+    data-testid="button-hero-work"
+    className="button-with-arrow group flex w-fit items-center gap-3 border-b-2 border-[hsl(var(--accent))] pb-2 text-sm font-bold"
+  >
+    Explore Our Work
+    <ArrowDown className="button-arrow h-4 w-4 transition-transform group-hover:translate-y-1" />
+  </button>
+
+  <button
+    type="button"
+    onClick={() => scrollToId('contact')}
+    data-testid="button-hero-book"
+    className="col-start-2 row-start-2 flex w-fit items-center gap-2 border-b border-[hsl(var(--border))] pb-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--foreground))] sm:col-auto sm:row-auto"
+  >
+    Book a Call
+  </button>
+</div>
         </div>
         <p className="hero-load-delay-2 mt-8 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">Saydul Haque Sayeed · Founder, Automexa</p>
       </div>
@@ -427,27 +459,84 @@ function MarqueeBand() {
 }
 
 function About() {
+  const infoCards = [
+    ['01', '6 Core Services', 'Connected digital capabilities built around real business needs.'],
+    ['02', '13+ Projects', 'A growing archive of practical systems, workflows, and digital experiences.'],
+    ['03', '8 Target Industries', 'Solutions shaped for small businesses across different industries.'],
+    ['04', 'Founder-Led', 'Every project is personally led by Saydul Haque Sayeed.'],
+  ];
+
   return (
     <section id="about" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
       <Reveal>
         <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
           <div>
-            <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">01 / About Saydul</p>
-            <h2 className="mt-5 max-w-[430px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Built by a technical mind. Designed around real business problems.</h2>
+            <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
+              01 / About Automexa
+            </p>
+
+            <h2 className="mt-5 max-w-[500px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">
+              AUTOMEXA HELPS BUSINESSES WORK SMARTER.
+            </h2>
           </div>
+
           <div>
-            <p className="max-w-[760px] text-[clamp(1.45rem,2.8vw,2.45rem)] leading-[1.24] tracking-[-.04em]">Hi, I’m Saydul — an AI Automation Engineer &amp; Web Developer focused on building practical digital systems.</p>
-            <p className="mt-7 max-w-[700px] text-base leading-8 text-[hsl(var(--muted-foreground))]">I work across AI automation, AI agents, workflow systems, CRM automation, web development, APIs, integrations, and business process automation. Automexa is the broader digital systems practice around that work — built to help small businesses connect the moving parts instead of collecting disconnected tools.</p>
-             <div className="mt-9 flex flex-wrap gap-2">
-               {['AI automation', 'AI agents', 'Workflow systems', 'CRM automation', 'Web development', 'APIs & integrations'].map((label) => <span key={label} className="rounded-full border border-[hsl(var(--border))] px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.1em] text-[hsl(var(--muted-foreground))]">{label}</span>)}
+            <p className="max-w-[760px] text-[clamp(1.45rem,2.8vw,2.45rem)] leading-[1.24] tracking-[-.04em]">
+              Automexa is a digital systems and automation agency founded by Saydul Haque Sayeed.
+            </p>
+
+            <p className="mt-7 max-w-[700px] text-base leading-8 text-[hsl(var(--muted-foreground))]">
+              We help small businesses simplify their operations, build modern digital
+              experiences, and connect the systems that keep their business moving —
+              from automation and websites to CRM, mobile applications, design, and content.
+            </p>
+
+            <p className="mt-7 max-w-[700px] text-base leading-8 text-[hsl(var(--muted-foreground))]">
+              I personally lead every project, combining technical problem-solving with
+              a practical understanding of how businesses operate. Our goal is simple:
+              build useful digital systems that solve real problems instead of adding
+              unnecessary complexity.
+            </p>
+
+            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--border))] sm:grid-cols-2">
+              {infoCards.map(([number, title, description]) => (
+                <div
+                  key={number}
+                  className="bg-[hsl(var(--card))] p-6 transition-colors hover:bg-[hsl(var(--muted)/.65)]"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--primary))]">
+                      {number}
+                    </span>
+
+                    <span className="h-2 w-2 rounded-full bg-[hsl(var(--accent))]" />
+                  </div>
+
+                  <h3 className="mt-8 font-display text-xl font-semibold tracking-[-.035em]">
+                    {title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-6 text-[hsl(var(--muted-foreground))]">
+                    {description}
+                  </p>
+                </div>
+              ))}
             </div>
+
+            <button
+              type="button"
+              onClick={() => scrollToId('services')}
+              className="button-with-arrow mt-9 flex items-center gap-2 border-b-2 border-[hsl(var(--accent))] pb-2 text-xs font-bold uppercase tracking-[.12em]"
+            >
+              Explore Services
+              <ArrowRight className="button-arrow h-4 w-4" />
+            </button>
           </div>
         </div>
       </Reveal>
     </section>
   );
 }
-
 function Services() {
   const services = [
     ['01', 'AI & Business Automation', 'Connect repetitive operations with practical AI-assisted workflows.', ['AI-powered workflows', 'Business process automation', 'AI agents', 'Customer support automation', 'Lead automation', 'Email automation', 'E-commerce automation', 'Internal business automation'], 'Reduce repetitive work and connect business operations.', Bot],
@@ -565,6 +654,9 @@ function WhyAutomexa() {
 }
 
 function ProjectArt({ project }: { project: Project }) {
+
+
+  
   const Icon = project.icon;
   return (
     <div className={`project-art relative h-56 overflow-hidden ${project.tone}`}>
@@ -578,6 +670,8 @@ function ProjectArt({ project }: { project: Project }) {
 }
 
 function Work({ onSelect }: { onSelect: (project: Project) => void }) {
+  
+
   const [activeFilter, setActiveFilter] = useState('All');
   const filters = ['All', 'AI & Automation', 'AI Agents', 'Business Systems', 'Web / Digital'];
   const filterCategories: Record<string, string[]> = {
@@ -661,7 +755,7 @@ function Journey() {
     <section id="journey" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
       <Reveal>
         <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">06 / Experience &amp; professional journey</p><h2 className="mt-5 max-w-[380px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">The path is still being written.</h2><p className="mt-6 max-w-[320px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">This is a clear home for the real timeline as the professional archive grows.</p></div>
+          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">09 / Experience &amp; professional journey</p><h2 className="mt-5 max-w-[380px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">The path is still being written.</h2><p className="mt-6 max-w-[320px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">This is a clear home for the real timeline as the professional archive grows.</p></div>
           <div className="relative pl-8 sm:pl-12">
             <div className="timeline-line absolute bottom-5 left-[7px] top-2 w-px sm:left-[15px]" />
             <div className="space-y-12">
@@ -742,7 +836,7 @@ function References() {
       <div className="mx-auto max-w-[1240px]">
         <Reveal>
           <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-center">
-            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">09 / Testimonials &amp; references</p><h2 className="mt-5 max-w-[390px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Let the right people speak.</h2></div>
+            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">10 / Testimonials &amp; references</p><h2 className="mt-5 max-w-[390px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Let the right people speak.</h2></div>
             <div className="rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--background)/.55)] p-7 sm:p-10"><MessageSquareText className="h-6 w-6 text-[hsl(var(--primary))]" /><p className="mt-8 max-w-[500px] font-display text-2xl leading-[1.25] tracking-[-.035em]">Testimonials and professional references will live here once they are available.</p><p className="mt-5 text-sm leading-6 text-[hsl(var(--muted-foreground))]">No quotes, names, companies, or outcomes have been added without source material.</p></div>
           </div>
         </Reveal>
@@ -757,7 +851,7 @@ function Resume() {
     <section id="resume" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-28">
       <Reveal>
         <div className="flex flex-col justify-between gap-8 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-7 sm:p-10 lg:flex-row lg:items-center">
-          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">10 / Resume</p><h2 className="mt-4 font-display text-3xl font-semibold tracking-[-.05em] sm:text-4xl">A fuller professional record.</h2><p className="mt-3 max-w-[550px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Download Saydul’s current CV as supplied.</p></div>
+          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">11 / Resume</p><h2 className="mt-4 font-display text-3xl font-semibold tracking-[-.05em] sm:text-4xl">A fuller professional record.</h2><p className="mt-3 max-w-[550px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Download Saydul’s current CV as supplied.</p></div>
           <a href={resumeFile} download="Saydul_Haque_Sayeed_CV(Update)_1788465350283.pdf" data-testid="link-resume-download" className="button-with-arrow flex w-fit shrink-0 items-center gap-3 rounded-full bg-[hsl(var(--primary))] px-5 py-3.5 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--primary-foreground))] transition-transform hover:-translate-y-1">Download Resume <FileText className="button-arrow h-4 w-4" /></a>
         </div>
       </Reveal>
@@ -819,12 +913,48 @@ function Contact() {
                 <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><Clock3 className="h-4 w-4 text-[hsl(var(--secondary))]" /> Response time not provided</div>
               </div>
               <div className="mt-10 border-t border-[hsl(var(--background)/.16)] pt-6">
-                <p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--background)/.42)]">Social links</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <a href="https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/" target="_blank" rel="noreferrer" data-testid="link-social-linkedin" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"><Linkedin className="h-3.5 w-3.5" /> LinkedIn <ExternalLink className="h-3 w-3 opacity-50" /></a>
-                  <a href="https://github.com/Saydulhaque11" target="_blank" rel="noreferrer" data-testid="link-social-github" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"><Github className="h-3.5 w-3.5" /> GitHub <ExternalLink className="h-3 w-3 opacity-50" /></a>
-                </div>
-              </div>
+  <p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--background)/.42)]">
+    Social links
+  </p>
+
+  <div className="mt-4 flex flex-wrap gap-2">
+    <a
+      href="https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/"
+      target="_blank"
+      rel="noreferrer"
+      data-testid="link-social-linkedin"
+      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
+    >
+      <Linkedin className="h-3.5 w-3.5" />
+      LinkedIn
+      <ExternalLink className="h-3 w-3 opacity-50" />
+    </a>
+
+    <a
+      href="https://github.com/Saydulhaque11"
+      target="_blank"
+      rel="noreferrer"
+      data-testid="link-social-github"
+      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
+    >
+      <Github className="h-3.5 w-3.5" />
+      GitHub
+      <ExternalLink className="h-3 w-3 opacity-50" />
+    </a>
+
+    <a
+      href="https://www.instagram.com/saydul.ai/"
+      target="_blank"
+      rel="noreferrer"
+      data-testid="link-social-instagram"
+      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
+    >
+      <Instagram className="h-3.5 w-3.5" />
+      Instagram
+      <ExternalLink className="h-3 w-3 opacity-50" />
+    </a>
+  </div>
+</div>
             </div>
             <form onSubmit={submit} className="rounded-2xl border border-[hsl(var(--background)/.2)] bg-[hsl(var(--background)/.06)] p-6 sm:p-8">
               {sent ? (
@@ -941,7 +1071,7 @@ function Home() {
         <Process />
         <WhyAutomexa />
         <Journey />
-        <Education />
+        
         <References />
         <Resume />
         <FinalCTA />

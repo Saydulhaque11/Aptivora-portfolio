@@ -1,5 +1,5 @@
 import { Router, type IRouter, type Request } from "express";
-import { ReplitConnectors } from "@replit/connectors-sdk";
+
 
 const router: IRouter = Router();
 
@@ -107,33 +107,47 @@ router.post("/contact", async (req, res) => {
   const safeProjectType = escapeHtml(projectType || "Not specified");
 
   try {
-    const connectors = new ReplitConnectors();
-    const response = await connectors.proxy("resend", "/emails", {
-      method: "POST",
-      body: {
-        from:
-          process.env.CONTACT_FROM_EMAIL?.trim() ||
-          "onboarding@resend.dev",
-        to: [recipient],
-        reply_to: email,
-        subject: `New portfolio inquiry from ${name}`,
-        text: [
-          `Name: ${name}`,
-          `Email: ${email}`,
-          `Project type: ${projectType || "Not specified"}`,
-          "",
-          message,
-        ].join("\n"),
-        html: `
-          <h2>New portfolio inquiry</h2>
-          <p><strong>Name:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          <p><strong>Project type:</strong> ${safeProjectType}</p>
-          <p><strong>Message:</strong></p>
-          <p>${safeMessage}</p>
-        `,
-      },
-    });
+    const resendApiKey = process.env.RESEND_API_KEY?.trim();
+
+if (!resendApiKey) {
+  req.log.error("RESEND_API_KEY is not configured");
+  res.status(503).json({
+    status: "error",
+    message: "Contact delivery is temporarily unavailable.",
+  });
+  return;
+}
+
+const response = await fetch("https://api.resend.com/emails", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${resendApiKey}`,
+  },
+  body: JSON.stringify({
+    from:
+      process.env.CONTACT_FROM_EMAIL?.trim() ||
+      "onboarding@resend.dev",
+    to: [recipient],
+    reply_to: email,
+    subject: `New portfolio inquiry from ${name}`,
+    text: [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Project type: ${projectType || "Not specified"}`,
+      "",
+      message,
+    ].join("\n"),
+    html: `
+      <h2>New portfolio inquiry</h2>
+      <p><strong>Name:</strong> ${safeName}</p>
+      <p><strong>Email:</strong> ${safeEmail}</p>
+      <p><strong>Project type:</strong> ${safeProjectType}</p>
+      <p><strong>Message:</strong></p>
+      <p>${safeMessage}</p>
+    `,
+  }),
+});
 
     if (!response.ok) {
       req.log.error(
