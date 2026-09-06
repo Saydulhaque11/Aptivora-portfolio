@@ -668,83 +668,817 @@ function ProjectArt({ project }: { project: Project }) {
     </div>
   );
 }
+function AutomexaAgent() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([
+    {
+      role: 'assistant',
+      content:
+        "Hi! I'm the Automexa Assistant. I can help you understand our services, digital systems, and how we can improve your business.",
+    },
+  ]);
+
+  const suggestions = [
+    'What can Automexa build?',
+    'Can you automate my business?',
+    'What services do you offer?',
+    'I want to start a project',
+  ];
+
+  const handleSend = async (text?: string) => {
+  const value = (text ?? message).trim();
+
+  if (!value) return;
+
+  const userMessage = {
+    role: 'user' as const,
+    content: value,
+  };
+
+  setMessages((prev) => [...prev, userMessage]);
+  setMessage('');
+
+  try {
+    const response = await fetch('/api/agent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: value,
+        history: messages,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'AI request failed');
+    }
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: 'assistant' as const,
+        content: data.answer,
+      },
+    ]);
+  } catch (error) {
+    console.error('Automexa Agent error:', error);
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: 'assistant' as const,
+        content:
+          "I'm having trouble connecting to the AI system right now. Please try again in a moment.",
+      },
+    ]);
+  }
+};
+  return (
+    <>
+      {/* Floating Agent Button */}
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open Automexa Assistant"
+          className="fixed bottom-6 right-6 z-[90] flex items-center gap-3 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--foreground))] px-5 py-3.5 text-[hsl(var(--background))] shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))]"
+        >
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--background)/.12)]">
+            <Bot className="h-4 w-4" />
+          </span>
+
+          <span className="text-xs font-bold uppercase tracking-[.12em]">
+            Ask Automexa
+          </span>
+        </button>
+      )}
+
+      {/* Agent Panel */}
+      {isOpen && (
+        <div className="fixed bottom-5 right-5 z-[90] flex w-[calc(100vw-40px)] max-w-[410px] flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] shadow-2xl">
+
+          {/* Header */}
+          <div className="flex items-center justify-between border-b border-[hsl(var(--border))] px-5 py-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]">
+                <Bot className="h-5 w-5" />
+              </div>
+
+              <div>
+                <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
+                  Automexa
+                </p>
+
+                <p className="mt-1 text-sm font-semibold">
+                  Digital Systems Assistant
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close assistant"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] transition-colors hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Status */}
+          <div className="flex items-center gap-2 border-b border-[hsl(var(--border))] px-5 py-3">
+            <span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" />
+
+            <span className="font-mono-custom text-[9px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">
+              Ready to help
+            </span>
+          </div>
+
+          {/* Messages */}
+          <div className="max-h-[430px] min-h-[300px] space-y-4 overflow-y-auto p-5">
+
+            {messages.map((item, index) => (
+              <div
+                key={index}
+                className={`flex ${
+                  item.role === 'user'
+                    ? 'justify-end'
+                    : 'justify-start'
+                }`}
+              >
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 ${
+                    item.role === 'user'
+                      ? 'rounded-br-md bg-[hsl(var(--foreground))] text-[hsl(var(--background))]'
+                      : 'rounded-bl-md bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
+                  }`}
+                >
+                  {item.content}
+                </div>
+              </div>
+            ))}
+
+            {/* Suggestions */}
+            {messages.length === 1 && (
+              <div className="pt-2">
+                <p className="mb-3 font-mono-custom text-[9px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">
+                  Try asking
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {suggestions.map((suggestion) => (
+                    <button
+                      key={suggestion}
+                      type="button"
+                      onClick={() => handleSend(suggestion)}
+                      className="rounded-full border border-[hsl(var(--border))] px-3 py-2 text-[10px] font-semibold text-[hsl(var(--muted-foreground))] transition-all hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--foreground))]"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Input */}
+          <div className="border-t border-[hsl(var(--border))] p-4">
+            <div className="flex items-center gap-2 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--muted)/.45)] p-2">
+
+              <input
+                type="text"
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    handleSend();
+                  }
+                }}
+                placeholder="Ask about Automexa..."
+                className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm outline-none placeholder:text-[hsl(var(--muted-foreground))]"
+              />
+
+              <button
+                type="button"
+                onClick={() => handleSend()}
+                disabled={!message.trim()}
+                aria-label="Send message"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--foreground))] text-[hsl(var(--background))] transition-colors hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+
+            </div>
+
+            <p className="mt-3 text-center font-mono-custom text-[8px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">
+              Automexa digital systems assistant
+            </p>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
 
 function Work({ onSelect }: { onSelect: (project: Project) => void }) {
-  
+  const [businessType, setBusinessType] = useState('');
+  const [challenge, setChallenge] = useState('');
+  const [teamSize, setTeamSize] = useState('');
+  const [analyzed, setAnalyzed] = useState(false);
 
-  const [activeFilter, setActiveFilter] = useState('All');
-  const filters = ['All', 'AI & Automation', 'AI Agents', 'Business Systems', 'Web / Digital'];
-  const filterCategories: Record<string, string[]> = {
-    'AI & Automation': ['AI automation', 'n8n workflows'],
-    'AI Agents': ['AI agents'],
-    'Business Systems': ['Business automation', 'Lead qualification'],
-    'Web / Digital': ['Web development'],
+  const businessOptions = [
+    'E-commerce',
+    'Real Estate',
+    'Dental / Medical',
+    'Marketing Agency',
+    'Recruitment Agency',
+    'Local Business',
+    'Startup',
+    'Other',
+  ];
+
+  const challengeOptions = [
+    'Too much manual work',
+    'Slow lead follow-up',
+    'Customer support takes too much time',
+    'Sales process is not organized',
+    'Different systems do not communicate',
+    'Website / digital presence needs improvement',
+    'I want to scale the business',
+  ];
+
+  const teamOptions = [
+    '1–5 people',
+    '6–20 people',
+    '21–50 people',
+    '50+ people',
+  ];
+
+  const canAnalyze = businessType && challenge && teamSize;
+
+  const getRecommendation = () => {
+    if (challenge === 'Slow lead follow-up') {
+      return {
+        title: 'Lead Response & Follow-up System',
+        description:
+          'Capture incoming leads, organize them automatically, trigger timely follow-ups, and keep your sales process moving without relying on manual reminders.',
+        capabilities: [
+          'Lead capture',
+          'Automated follow-up',
+          'Lead qualification',
+          'Sales pipeline management',
+        ],
+      };
+    }
+
+    if (challenge === 'Customer support takes too much time') {
+      return {
+        title: 'AI-Powered Customer Support System',
+        description:
+          'Create a structured support experience that can handle common questions, route important conversations, and keep customer information organized.',
+        capabilities: [
+          'AI customer assistance',
+          'Conversation routing',
+          'Knowledge-based responses',
+          'Support workflow automation',
+        ],
+      };
+    }
+
+    if (challenge === 'Sales process is not organized') {
+      return {
+        title: 'Sales & CRM System',
+        description:
+          'Turn scattered enquiries and follow-ups into one connected sales process with clear stages, automated actions, and better visibility.',
+        capabilities: [
+          'Lead organization',
+          'Sales pipeline',
+          'Automated tasks',
+          'Customer lifecycle management',
+        ],
+      };
+    }
+
+    if (challenge === 'Different systems do not communicate') {
+      return {
+        title: 'Connected Digital System',
+        description:
+          'Connect the systems your business already uses so information can move between them automatically instead of being copied manually.',
+        capabilities: [
+          'System integration',
+          'API connectivity',
+          'Data synchronization',
+          'Cross-platform workflows',
+        ],
+      };
+    }
+
+    if (challenge === 'Website / digital presence needs improvement') {
+      return {
+        title: 'Modern Digital Experience',
+        description:
+          'Build a professional digital presence designed around your customers, business goals, conversion journey, and future growth.',
+        capabilities: [
+          'Modern website',
+          'Conversion-focused UX',
+          'Responsive experience',
+          'Digital system integration',
+        ],
+      };
+    }
+
+    if (challenge === 'I want to scale the business') {
+      return {
+        title: 'Scalable Business Operating System',
+        description:
+          'Identify repetitive processes and connect them into a scalable digital system that reduces operational friction as the business grows.',
+        capabilities: [
+          'Process automation',
+          'Business workflows',
+          'System integration',
+          'Scalable digital infrastructure',
+        ],
+      };
+    }
+
+    return {
+      title: 'Business Process Automation System',
+      description:
+        'Identify repetitive work, structure your processes, and connect the right digital systems to reduce manual effort and improve operational efficiency.',
+      capabilities: [
+        'Workflow automation',
+        'AI-powered processes',
+        'System integration',
+        'Business process optimization',
+      ],
+    };
   };
-  const visibleProjects = useMemo(() => activeFilter === 'All' ? projects : projects.filter((project) => filterCategories[activeFilter]?.includes(project.category)), [activeFilter]);
+
+  const recommendation = getRecommendation();
+
+  const resetAnalyzer = () => {
+    setBusinessType('');
+    setChallenge('');
+    setTeamSize('');
+    setAnalyzed(false);
+  };
+
   return (
-    <section id="work" className="bg-[hsl(var(--muted)/.55)] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
+    <section
+      id="work"
+      className="bg-[hsl(var(--muted)/.55)] px-5 py-24 sm:px-8 lg:px-10 lg:py-36"
+    >
       <div className="mx-auto max-w-[1240px]">
+
+        {/* Section Header */}
         <Reveal>
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
-              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">05 / Work archive</p>
-               <h2 className="mt-5 font-display text-5xl font-semibold leading-none tracking-[-.06em] sm:text-7xl">Work that<br /><span className="text-[hsl(var(--primary))]">connects.</span></h2>
+              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
+                05 / Digital systems
+              </p>
+
+              <h2 className="mt-5 font-display text-5xl font-semibold leading-none tracking-[-.06em] sm:text-7xl">
+                Work that
+                <br />
+                <span className="text-[hsl(var(--primary))]">
+                  connects.
+                </span>
+              </h2>
             </div>
-             <p className="max-w-[340px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">A focused archive of systems, workflows, and interfaces built through Saydul’s hands-on technical practice.</p>
+
+            <p className="max-w-[340px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">
+              Explore selected work, then discover what kind of digital system
+              could make your own business work better.
+            </p>
           </div>
         </Reveal>
+
+        {/* Featured Work */}
         <Reveal delay={1}>
           <div className="mt-16">
-             <div className="mb-5 flex items-center justify-between"><h3 className="font-display text-2xl font-semibold tracking-[-.04em]">Featured Work</h3><span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">selected / 04</span></div>
-             <div className="grid gap-5 lg:grid-cols-2">
-               {projects.slice(0, 4).map((project) => (
-                 <div key={project.id} role="button" tabIndex={0} onClick={() => onSelect(project)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(project); }} data-testid={`card-featured-project-${project.id}`} className="project-card group grid w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left sm:grid-cols-[.9fr_1.1fr]">
+            <div className="mb-5 flex items-center justify-between">
+              <h3 className="font-display text-2xl font-semibold tracking-[-.04em]">
+                Featured Work
+              </h3>
+
+              <span className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">
+                selected / 04
+              </span>
+            </div>
+
+            <div className="grid gap-5 lg:grid-cols-2">
+              {projects.slice(0, 4).map((project) => (
+                <div
+                  key={project.id}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => onSelect(project)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      onSelect(project);
+                    }
+                  }}
+                  data-testid={`card-featured-project-${project.id}`}
+                  className="project-card group grid w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left sm:grid-cols-[.9fr_1.1fr]"
+                >
                   <ProjectArt project={project} />
-                    <div className="flex flex-col justify-between p-6"><div><p className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">Featured / {project.index}</p><h4 className="mt-3 font-display text-2xl font-semibold tracking-[-.04em]">{project.title}</h4><p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.description}</p></div><div className="mt-8 flex flex-wrap items-center gap-4"><button type="button" onClick={(event) => { event.stopPropagation(); onSelect(project); }} className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]">Open case study <ArrowUpRight className="h-4 w-4 text-[hsl(var(--accent))] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></button><a href={project.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} data-testid={`link-featured-project-${project.id}`} className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--primary))]">View Project on LinkedIn <ExternalLink className="h-3.5 w-3.5" /></a></div></div>
-                 </div>
+
+                  <div className="flex flex-col justify-between p-6">
+                    <div>
+                      <p className="font-mono-custom text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent))]">
+                        Featured / {project.index}
+                      </p>
+
+                      <h4 className="mt-3 font-display text-2xl font-semibold tracking-[-.04em]">
+                        {project.title}
+                      </h4>
+
+                      <p className="mt-3 text-sm leading-6 text-[hsl(var(--muted-foreground))]">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap items-center gap-4">
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onSelect(project);
+                        }}
+                        className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em]"
+                      >
+                        Open case study
+
+                        <ArrowUpRight className="h-4 w-4 text-[hsl(var(--accent))] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      </button>
+
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(event) => event.stopPropagation()}
+                        data-testid={`link-featured-project-${project.id}`}
+                        className="flex items-center gap-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--primary))]"
+                      >
+                        View Project on LinkedIn
+
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </Reveal>
+
+        {/* Business System Analyzer */}
         <Reveal delay={2}>
-          <div className="mt-20 flex flex-col justify-between gap-5 border-t border-[hsl(var(--border))] pt-8 sm:flex-row sm:items-end">
-             <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">All Work</p><h3 className="mt-3 font-display text-3xl font-semibold tracking-[-.05em]">Explore All Work.</h3></div>
-            <p className="max-w-[310px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Filter by the kind of system or surface you want to explore.</p>
-          </div>
-        </Reveal>
-        <Reveal delay={1}>
-          <div className="mt-12 flex flex-wrap gap-2" role="tablist" aria-label="Filter work archive">
-            {filters.map((filter) => (
-              <button key={filter} type="button" onClick={() => setActiveFilter(filter)} data-testid={`button-filter-${filter.toLowerCase().replaceAll(' ', '-')}`} role="tab" aria-selected={activeFilter === filter} className={`filter-pill rounded-full border px-4 py-2 text-xs font-semibold ${activeFilter === filter ? 'border-[hsl(var(--foreground))] bg-[hsl(var(--foreground))] text-[hsl(var(--background))]' : 'border-[hsl(var(--border))] bg-[hsl(var(--background))] text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--foreground)/.5)]'}`}>{filter}</button>
-            ))}
-          </div>
-        </Reveal>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {visibleProjects.map((project, index) => (
-            <Reveal key={project.id} delay={(index % 3) + 1}>
-               <div role="button" tabIndex={0} onClick={() => onSelect(project)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(project); }} data-testid={`card-project-${project.id}`} className="project-card group block w-full overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] text-left">
-                <ProjectArt project={project} />
-                <div className="p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-4">
-                    <div><p className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">{project.index} — {project.category}</p><h3 className="mt-3 font-display text-2xl font-semibold tracking-[-.04em]">{project.title}</h3></div>
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[hsl(var(--border))] transition-colors group-hover:bg-[hsl(var(--primary))] group-hover:text-[hsl(var(--primary-foreground))]"><ArrowUpRight className="h-4 w-4" /></span>
+          <div className="mt-24 border-t border-[hsl(var(--border))] pt-12">
+
+            {/* Analyzer Heading */}
+            <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-end">
+              <div>
+                <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
+                  06/ System analyzer
+                </p>
+
+                <h3 className="mt-4 font-display text-4xl font-semibold leading-[.95] tracking-[-.055em] sm:text-6xl">
+                  What could your
+                  <br />
+                  business
+                  <br />
+                  <span className="text-[hsl(var(--primary))]">
+                    automate?
+                  </span>
+                </h3>
+              </div>
+
+              <p className="max-w-[500px] text-sm leading-7 text-[hsl(var(--muted-foreground))]">
+                Tell us a little about your business and the challenge you're
+                facing. This interactive system will map your situation to a
+                potential digital solution.
+              </p>
+            </div>
+
+            {/* Analyzer Card */}
+            <div className="mt-10 overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--background))]">
+
+              {/* Top System Bar */}
+              <div className="flex flex-col justify-between gap-4 border-b border-[hsl(var(--border))] px-6 py-5 sm:flex-row sm:items-center sm:px-8">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[hsl(var(--border))]">
+                    <Bot className="h-4 w-4 text-[hsl(var(--primary))]" />
+                  </span>
+
+                  <div>
+                    <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+                      Automexa intelligence
+                    </p>
+
+                    <p className="mt-1 text-sm font-semibold">
+                      Business system mapper
+                    </p>
                   </div>
-                  <p className="mt-4 max-w-[420px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">{project.description}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="rounded-md bg-[hsl(var(--muted))] px-2 py-1 font-mono-custom text-[9px] uppercase tracking-[.08em] text-[hsl(var(--muted-foreground))]">{tag}</span>)}</div>
-                    <a href={project.url} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()} data-testid={`link-project-${project.id}`} className="mt-7 flex w-fit items-center gap-2 border-b border-[hsl(var(--accent))] pb-1 text-xs font-bold uppercase tracking-[.12em] transition-colors hover:text-[hsl(var(--primary))]">View Project on LinkedIn <ExternalLink className="h-3.5 w-3.5" /></a>
                 </div>
-               </div>
-            </Reveal>
-          ))}
-        </div>
-         <Reveal>
-           <div className="mt-10 flex items-center gap-3 border-t border-[hsl(var(--border))] pt-6 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]"><span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" /> Project descriptions are intentionally limited to the information available in each LinkedIn post.</div>
-         </Reveal>
+
+                <span className="flex items-center gap-2 font-mono-custom text-[9px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">
+                  <span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" />
+                  Interactive
+                </span>
+              </div>
+
+              {!analyzed ? (
+                <div className="grid gap-0 lg:grid-cols-[1fr_.9fr]">
+
+                  {/* Form */}
+                  <div className="p-6 sm:p-8 lg:border-r lg:border-[hsl(var(--border))]">
+                    <div className="grid gap-7">
+
+                      {/* Business Type */}
+                      <div>
+                        <label className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+                          01 / Business type
+                        </label>
+
+                        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                          {businessOptions.map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setBusinessType(option)}
+                              className={`rounded-xl border px-3 py-3 text-left text-xs font-semibold transition-all ${
+                                businessType === option
+                                  ? 'border-[hsl(var(--foreground))] bg-[hsl(var(--foreground))] text-[hsl(var(--background))]'
+                                  : 'border-[hsl(var(--border))] bg-[hsl(var(--background))] text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--foreground)/.4)] hover:text-[hsl(var(--foreground))]'
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Main Challenge */}
+                      <div>
+                        <label className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+                          02 / Main challenge
+                        </label>
+
+                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                          {challengeOptions.map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setChallenge(option)}
+                              className={`rounded-xl border px-4 py-3 text-left text-xs font-semibold transition-all ${
+                                challenge === option
+                                  ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]'
+                                  : 'border-[hsl(var(--border))] bg-[hsl(var(--background))] text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--foreground)/.4)] hover:text-[hsl(var(--foreground))]'
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Team Size */}
+                      <div>
+                        <label className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+                          03 / Team size
+                        </label>
+
+                        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                          {teamOptions.map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setTeamSize(option)}
+                              className={`rounded-xl border px-3 py-3 text-xs font-semibold transition-all ${
+                                teamSize === option
+                                  ? 'border-[hsl(var(--foreground))] bg-[hsl(var(--foreground))] text-[hsl(var(--background))]'
+                                  : 'border-[hsl(var(--border))] bg-[hsl(var(--background))] text-[hsl(var(--muted-foreground))] hover:border-[hsl(var(--foreground)/.4)] hover:text-[hsl(var(--foreground))]'
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Analyze Button */}
+                      <button
+                        type="button"
+                        disabled={!canAnalyze}
+                        onClick={() => setAnalyzed(true)}
+                        className={`group mt-2 flex w-full items-center justify-center gap-3 rounded-full px-6 py-4 text-xs font-bold uppercase tracking-[.14em] transition-all ${
+                          canAnalyze
+                            ? 'bg-[hsl(var(--foreground))] text-[hsl(var(--background))] hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))]'
+                            : 'cursor-not-allowed bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))]'
+                        }`}
+                      >
+                        Analyze my business
+
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Visual / Explanation */}
+                  <div className="relative flex min-h-[420px] flex-col justify-between overflow-hidden bg-[hsl(var(--muted)/.45)] p-6 sm:p-8">
+
+                    <div>
+                      <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+                        How it works
+                      </p>
+
+                      <p className="mt-4 max-w-[330px] text-sm leading-7 text-[hsl(var(--muted-foreground))]">
+                        Your answers become a simple system map — helping
+                        identify where automation, AI, integration, or digital
+                        development could create the most value.
+                      </p>
+                    </div>
+
+                    {/* System Map */}
+                    <div className="relative mx-auto my-10 w-full max-w-[390px]">
+
+                      <div className="grid gap-3">
+
+                        <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                          <p className="font-mono-custom text-[8px] uppercase tracking-[.14em] text-[hsl(var(--accent))]">
+                            Input
+                          </p>
+
+                          <p className="mt-2 text-sm font-semibold">
+                            Your business
+                          </p>
+                        </div>
+
+                        <div className="mx-auto h-8 w-px bg-[hsl(var(--border))]" />
+
+                        <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] p-4">
+                          <p className="font-mono-custom text-[8px] uppercase tracking-[.14em] text-[hsl(var(--accent))]">
+                            Analyze
+                          </p>
+
+                          <p className="mt-2 text-sm font-semibold">
+                            Find repetitive processes
+                          </p>
+                        </div>
+
+                        <div className="mx-auto h-8 w-px bg-[hsl(var(--border))]" />
+
+                        <div className="rounded-2xl border border-[hsl(var(--primary))] bg-[hsl(var(--primary))] p-4 text-[hsl(var(--primary-foreground))]">
+                          <p className="font-mono-custom text-[8px] uppercase tracking-[.14em] opacity-70">
+                            Output
+                          </p>
+
+                          <p className="mt-2 text-sm font-semibold">
+                            Recommended digital system
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <p className="font-mono-custom text-[9px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">
+                      No technical knowledge required
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                /* Analysis Result */
+                <div className="p-6 sm:p-8">
+
+                  <div className="grid gap-5 lg:grid-cols-[.8fr_1.2fr]">
+
+                    {/* Result Intro */}
+                    <div className="rounded-2xl bg-[hsl(var(--muted)/.5)] p-6 sm:p-7">
+                      <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
+                        Analysis complete
+                      </p>
+
+                      <h4 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-.05em]">
+                        Your business has a potential
+                        <span className="text-[hsl(var(--primary))]">
+                          {' '}
+                          system opportunity.
+                        </span>
+                      </h4>
+
+                      <div className="mt-7 border-t border-[hsl(var(--border))] pt-5">
+                        <p className="font-mono-custom text-[8px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">
+                          Your inputs
+                        </p>
+
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <span className="rounded-full border border-[hsl(var(--border))] px-3 py-1.5 text-[10px] font-semibold">
+                            {businessType}
+                          </span>
+
+                          <span className="rounded-full border border-[hsl(var(--border))] px-3 py-1.5 text-[10px] font-semibold">
+                            {teamSize}
+                          </span>
+                        </div>
+
+                        <p className="mt-4 text-xs leading-6 text-[hsl(var(--muted-foreground))]">
+                          Main challenge: {challenge}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Recommendation */}
+                    <div className="rounded-2xl border border-[hsl(var(--border))] p-6 sm:p-7">
+
+                      <div className="flex items-start justify-between gap-5">
+                        <div>
+                          <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
+                            Recommended direction
+                          </p>
+
+                          <h4 className="mt-3 font-display text-3xl font-semibold tracking-[-.05em]">
+                            {recommendation.title}
+                          </h4>
+                        </div>
+
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]">
+                          <ArrowUpRight className="h-4 w-4" />
+                        </span>
+                      </div>
+
+                      <p className="mt-5 max-w-[650px] text-sm leading-7 text-[hsl(var(--muted-foreground))]">
+                        {recommendation.description}
+                      </p>
+
+                      <div className="mt-7 border-t border-[hsl(var(--border))] pt-6">
+                        <p className="font-mono-custom text-[9px] uppercase tracking-[.15em] text-[hsl(var(--muted-foreground))]">
+                          System capabilities
+                        </p>
+
+                        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                          {recommendation.capabilities.map((item) => (
+                            <div
+                              key={item}
+                              className="flex items-center gap-3 rounded-xl bg-[hsl(var(--muted)/.55)] px-4 py-3"
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--secondary))]" />
+
+                              <span className="text-xs font-semibold">
+                                {item}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <a
+                          href="#contact"
+                          className="group flex items-center justify-center gap-2 rounded-full bg-[hsl(var(--foreground))] px-6 py-3.5 text-xs font-bold uppercase tracking-[.13em] text-[hsl(var(--background))] transition-colors hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))]"
+                        >
+                          Discuss this system
+
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </a>
+
+                        <button
+                          type="button"
+                          onClick={resetAnalyzer}
+                          className="rounded-full border border-[hsl(var(--border))] px-6 py-3.5 text-xs font-bold uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))] transition-colors hover:border-[hsl(var(--foreground)/.4)] hover:text-[hsl(var(--foreground))]"
+                        >
+                          Start again
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Note */}
+                  <div className="mt-6 flex items-center gap-3 border-t border-[hsl(var(--border))] pt-6">
+                    <span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" />
+
+                    <p className="font-mono-custom text-[9px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">
+                      This is an initial opportunity map — a deeper discovery
+                      session determines the right architecture for your
+                      business.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </Reveal>
+
       </div>
     </section>
   );
 }
-
 function Journey() {
   const entries = [
     ['01', 'Project-based AI automation work', 'Hands-on technical experience', 'AI automation, AI agents, n8n workflow development, and connected systems are presented as project-based work.'],
@@ -1105,6 +1839,9 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <Router />
         </WouterRouter>
+
+        <AutomexaAgent />
+
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
