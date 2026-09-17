@@ -1,5 +1,9 @@
+import InstagramFeed from "@/components/InstagramFeed";
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import HeroManagement from "@/pages/admin/HeroManagement";
 import {
   ArrowDown,
   ArrowRight,
@@ -323,11 +327,11 @@ function Header({ onOpenMenu }: { onOpenMenu: () => void }) {
           <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-[hsl(var(--background))] shadow-[4px_4px_0_hsl(var(--secondary))]">
   <img
     src="/images/logo.png"
-    alt="Automexa Logo"
+    alt="Aptivoro Logo"
     className="h-full w-full object-contain"
   />
 </span>
-          <span><span className="block font-mono-custom text-[9px] font-bold uppercase tracking-[.15em] text-[hsl(var(--primary))]">Automexa</span><span className="block font-display text-[15px] font-bold tracking-[-.03em]">Saydul Haque Sayeed</span></span>
+          <span><span className="block font-mono-custom text-[9px] font-bold uppercase tracking-[.15em] text-[hsl(var(--primary))]">Aptivoro</span><span className="block font-display text-[15px] font-bold tracking-[-.03em]">Saydul Haque Sayeed</span></span>
         </button>
         <nav aria-label="Primary navigation" className="hidden items-center gap-5 lg:flex">
           {[['home', 'Home'], ['services', 'Services'], ['work', 'Work'], ['solutions', 'Solutions'], ['about', 'About'], ['process', 'Process'], ['journey', 'Journey'], ['contact', 'Contact']].map(([id, label]) => (
@@ -363,96 +367,193 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
             </button>
           ))}
         </div>
-        <div className="mt-auto font-mono-custom text-xs text-[hsl(var(--muted-foreground))]">Automexa · digital systems &amp; automation</div>
+        <div className="mt-auto font-mono-custom text-xs text-[hsl(var(--muted-foreground))]">Aptivoro · digital systems &amp; automation</div>
       </div>
     </div>
   );
 }
 
 function Hero() {
+  const [heroContent, setHeroContent] = useState({
+    eyebrow: "Aptivoro / digital systems & automation",
+    title: "We build",
+    highlight: "digital systems",
+    highlightAfter: "that work smarter.",
+    description:
+      "AI automation, websites, CRM systems, mobile apps, design, and content — connected into one practical digital ecosystem.",
+    primaryCta: "Start a Project",
+    primaryCtaLink: "#contact",
+    secondaryCta: "Explore Our Work",
+    secondaryCtaLink: "#work",
+    tertiaryCta: "Book a Call",
+    tertiaryCtaLink: "#contact",
+  });
+
+  useEffect(() => {
+    async function loadHero() {
+      try {
+        const response = await fetch("/api/sections/hero", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+        if (!data.content || data.isPublished === false) return;
+
+        setHeroContent((current) => ({
+          ...current,
+          eyebrow: data.content.eyebrow ?? current.eyebrow,
+          title: data.content.title ?? current.title,
+          highlight: data.content.highlight ?? current.highlight,
+          description: data.content.description ?? current.description,
+          primaryCta: data.content.primaryCta ?? current.primaryCta,
+          primaryCtaLink:
+            data.content.primaryCtaLink ?? current.primaryCtaLink,
+          secondaryCta:
+            data.content.secondaryCta ?? current.secondaryCta,
+          secondaryCtaLink:
+            data.content.secondaryCtaLink ?? current.secondaryCtaLink,
+        }));
+      } catch (error) {
+        console.error("Failed to load hero section:", error);
+      }
+    }
+
+    loadHero();
+  }, []);
+
   return (
-    <section id="home" className="relative mx-auto min-h-[700px] max-w-[1240px] px-5 pb-20 pt-36 sm:px-8 lg:flex lg:min-h-[780px] lg:items-center lg:px-10 lg:pt-32">
+    <section
+      id="home"
+      className="relative mx-auto min-h-[700px] max-w-[1240px] px-5 pb-20 pt-36 sm:px-8 lg:flex lg:min-h-[780px] lg:items-center lg:px-10 lg:pt-32"
+    >
       <div className="absolute right-[9%] top-36 h-40 w-40 rounded-full bg-[hsl(var(--secondary)/.2)] blur-3xl" />
+
       <div className="relative z-10 max-w-[780px]">
         <div className="hero-load mb-7 flex items-center gap-3 font-mono-custom text-[10px] font-medium uppercase tracking-[.18em] text-[hsl(var(--primary))]">
-          <span className="h-2 w-2 rounded-full bg-[hsl(var(--accent))]" /> Automexa / digital systems &amp; automation
+          <span className="h-2 w-2 rounded-full bg-[hsl(var(--accent))]" />
+
+          {heroContent.eyebrow}
         </div>
-        <h1 className="hero-load-delay font-display text-[clamp(3.7rem,9vw,8.6rem)] font-semibold leading-[.88] tracking-[-.075em]">
-          We build<br /><span className="text-[hsl(var(--primary))]">digital systems</span><br />that work smarter.
-        </h1>
+
+        <h1 className="hero-load-delay font-display text-[clamp(3.2rem,7.5vw,7.2rem)] font-semibold leading-[.88] tracking-[-.075em]">
+  {heroContent.title}
+  <br />
+  <span className="text-[hsl(var(--primary))]">
+    {heroContent.highlight}
+  </span>
+  <br />
+  {heroContent.highlightAfter || "that work smarter."}
+</h1>
+
         <div className="hero-load-delay-2 mt-9 grid max-w-[690px] gap-8 md:grid-cols-[1fr_240px] md:items-end">
           <p className="max-w-[510px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">
-            AI automation, websites, CRM systems, mobile apps, design, and content — connected into one practical digital ecosystem.
+            {heroContent.description}
           </p>
+
           <div className="grid grid-cols-2 gap-x-3 gap-y-3 sm:flex sm:flex-wrap sm:gap-4">
-  <button
-    type="button"
-    onClick={() => scrollToId('contact')}
-    data-testid="button-hero-start"
-    className="button-with-arrow group flex w-fit items-center gap-3 rounded-full bg-[hsl(var(--foreground))] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))] lg:hidden"
-  >
-    Start a Project
-    <ArrowUpRight className="button-arrow h-4 w-4" />
-  </button>
+            <button
+              type="button"
+              onClick={() => scrollToId("contact")}
+              data-testid="button-hero-start"
+              className="button-with-arrow group flex w-fit items-center gap-3 rounded-full bg-[hsl(var(--foreground))] px-4 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))] lg:hidden"
+            >
+              {heroContent.primaryCta}
+              <ArrowUpRight className="button-arrow h-4 w-4" />
+            </button>
 
-  <button
-    type="button"
-    onClick={() => scrollToId('work')}
-    data-testid="button-hero-work"
-    className="button-with-arrow group flex w-fit items-center gap-3 border-b-2 border-[hsl(var(--accent))] pb-2 text-sm font-bold"
-  >
-    Explore Our Work
-    <ArrowDown className="button-arrow h-4 w-4 transition-transform group-hover:translate-y-1" />
-  </button>
+            <button
+              type="button"
+              onClick={() => scrollToId("work")}
+              data-testid="button-hero-work"
+              className="button-with-arrow group flex w-fit items-center gap-3 border-b-2 border-[hsl(var(--accent))] pb-2 text-sm font-bold"
+            >
+              {heroContent.secondaryCta}
+              <ArrowDown className="button-arrow h-4 w-4 transition-transform group-hover:translate-y-1" />
+            </button>
 
-  <button
-    type="button"
-    onClick={() => scrollToId('contact')}
-    data-testid="button-hero-book"
-    className="col-start-2 row-start-2 flex w-fit items-center gap-2 border-b border-[hsl(var(--border))] pb-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--foreground))] sm:col-auto sm:row-auto"
-  >
-    Book a Call
-  </button>
-</div>
+            <button
+              type="button"
+              onClick={() => scrollToId("contact")}
+              data-testid="button-hero-book"
+              className="col-start-2 row-start-2 flex w-fit items-center gap-2 border-b border-[hsl(var(--border))] pb-2 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))] transition-colors hover:text-[hsl(var(--foreground))] sm:col-auto sm:row-auto"
+            >
+              {heroContent.tertiaryCta}
+            </button>
+          </div>
         </div>
-        <p className="hero-load-delay-2 mt-8 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">Saydul Haque Sayeed · Founder, Automexa</p>
+
+        <p className="hero-load-delay-2 mt-8 font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
+          Saydul Haque Sayeed · Founder, Aptivoro
+        </p>
       </div>
+
       <div className="hero-load-delay-2 relative mt-16 h-[310px] w-full max-w-[450px] lg:absolute lg:right-10 lg:top-[235px] lg:mt-0 lg:h-[410px]">
         <div className="absolute inset-0 rounded-[2rem] border border-[hsl(var(--border))] bg-[hsl(var(--card)/.7)] p-4 shadow-[var(--shadow-soft)]">
           <div className="flex items-center justify-between border-b border-[hsl(var(--border))] pb-3 font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
-            <span>personal systems map</span><span className="text-[hsl(var(--accent))]">live / 01</span>
+            <span>personal systems map</span>
+            <span className="text-[hsl(var(--accent))]">live / 01</span>
           </div>
+
           <div className="relative flex h-[calc(100%-36px)] items-center justify-center">
             <div className="absolute left-[13%] top-[29%] h-px w-[75%] rotate-[18deg] bg-[hsl(var(--primary)/.3)]" />
+
             <div className="absolute left-[22%] top-[55%] h-px w-[57%] -rotate-[19deg] bg-[hsl(var(--primary)/.3)]" />
+
             <div className="absolute left-[50%] top-[24%] h-[54%] w-px bg-[hsl(var(--primary)/.22)]" />
-            <div className="float-orb absolute left-[37%] top-[29%] flex h-24 w-24 items-center justify-center rounded-full border border-[hsl(var(--primary)/.55)] bg-[hsl(var(--primary))] text-center text-[10px] font-bold uppercase leading-4 tracking-[.1em] text-[hsl(var(--primary-foreground))] shadow-[10px_10px_0_hsl(var(--secondary)/.7)]">AI<br />automation</div>
+
+            <div className="float-orb absolute left-[37%] top-[29%] flex h-24 w-24 items-center justify-center rounded-full border border-[hsl(var(--primary)/.55)] bg-[hsl(var(--primary))] text-center text-[10px] font-bold uppercase leading-4 tracking-[.1em] text-[hsl(var(--primary-foreground))] shadow-[10px_10px_0_hsl(var(--secondary)/.7)]">
+              AI
+              <br />
+              automation
+            </div>
+
             {[
-              { text: 'n8n', x: '8%', y: '18%', icon: Workflow },
-              { text: 'REST', x: '67%', y: '12%', icon: Network },
-              { text: 'CRM', x: '5%', y: '67%', icon: DatabaseZap },
-              { text: 'web', x: '72%', y: '66%', icon: Code2 },
+              { text: "n8n", x: "8%", y: "18%", icon: Workflow },
+              { text: "REST", x: "67%", y: "12%", icon: Network },
+              { text: "CRM", x: "5%", y: "67%", icon: DatabaseZap },
+              { text: "web", x: "72%", y: "66%", icon: Code2 },
             ].map(({ text, x, y, icon: Icon }) => (
-              <div key={text} className="absolute flex items-center gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 py-2 text-[10px] font-bold uppercase tracking-[.12em] shadow-sm" style={{ left: x, top: y }}>
-                <Icon className="h-3.5 w-3.5 text-[hsl(var(--accent))]" /> {text}
+              <div
+                key={text}
+                className="absolute flex items-center gap-2 rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] px-3 py-2 text-[10px] font-bold uppercase tracking-[.12em] shadow-sm"
+                style={{ left: x, top: y }}
+              >
+                <Icon className="h-3.5 w-3.5 text-[hsl(var(--accent))]" />
+
+                {text}
               </div>
             ))}
-            <span className="absolute bottom-2 left-1 font-mono-custom text-[9px] text-[hsl(var(--muted-foreground))]">connecting the useful dots</span>
+
+            <span className="absolute bottom-2 left-1 font-mono-custom text-[9px] text-[hsl(var(--muted-foreground))]">
+              connecting the useful dots
+            </span>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
 function MarqueeBand() {
   return (
     <div className="border-y border-[hsl(var(--foreground))] bg-[hsl(var(--primary))] py-4 text-[hsl(var(--primary-foreground))]">
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-5 overflow-hidden px-5 sm:px-8 lg:px-10">
         <div className="flex min-w-max shrink-0 items-center gap-5 font-mono-custom text-[10px] font-medium uppercase tracking-[.16em]">
-          {capabilities.map(({ label }, index) => <span key={label} className="flex items-center gap-5"><span>{label}</span>{index < capabilities.length - 1 && <span className="text-[hsl(var(--secondary))]">/</span>}</span>)}
+          {capabilities.map(({ label }, index) => (
+            <span key={label} className="flex items-center gap-5">
+              <span>{label}</span>
+              {index < capabilities.length - 1 && (
+                <span className="text-[hsl(var(--secondary))]">/</span>
+              )}
+            </span>
+          ))}
         </div>
-        <span className="hidden shrink-0 font-mono-custom text-[10px] opacity-60 sm:block">SH / Automexa</span>
+        <span className="hidden shrink-0 font-mono-custom text-[10px] opacity-60 sm:block">
+          SH / Aptivoro
+        </span>
       </div>
     </div>
   );
@@ -472,17 +573,17 @@ function About() {
         <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
           <div>
             <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
-              01 / About Automexa
+              01 / About Aptivoro
             </p>
 
             <h2 className="mt-5 max-w-[500px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">
-              AUTOMEXA HELPS BUSINESSES WORK SMARTER.
+              APTIVORO HELPS BUSINESSES WORK SMARTER.
             </h2>
           </div>
 
           <div>
             <p className="max-w-[760px] text-[clamp(1.45rem,2.8vw,2.45rem)] leading-[1.24] tracking-[-.04em]">
-              Automexa is a digital systems and automation agency founded by Saydul Haque Sayeed.
+              Aptivoro is a digital systems and automation agency founded by Saydul Haque Sayeed.
             </p>
 
             <p className="mt-7 max-w-[700px] text-base leading-8 text-[hsl(var(--muted-foreground))]">
@@ -551,7 +652,7 @@ function Services() {
       <div className="mx-auto max-w-[1240px]">
         <Reveal>
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">02 / Automexa services</p><h2 className="mt-5 max-w-[700px] font-display text-5xl font-semibold leading-[.95] tracking-[-.06em] sm:text-7xl">Digital systems<br /><span className="text-[hsl(var(--secondary))]">for the real work.</span></h2></div>
+            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">02 / Aptivoro services</p><h2 className="mt-5 max-w-[700px] font-display text-5xl font-semibold leading-[.95] tracking-[-.06em] sm:text-7xl">Digital systems<br /><span className="text-[hsl(var(--secondary))]">for the real work.</span></h2></div>
             <p className="max-w-[350px] text-sm leading-6 text-[hsl(var(--background)/.58)]">Six connected capabilities for the space between a business need and a working system.</p>
           </div>
         </Reveal>
@@ -589,7 +690,7 @@ function Solutions() {
       <Reveal>
         <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
           <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">03 / Solutions</p><h2 className="mt-5 max-w-[470px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Built for ambitious small businesses.</h2></div>
-          <div><p className="max-w-[650px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">Automexa can shape the digital system behind the business — without pretending to already have clients, case-study results, or a one-size-fits-all package.</p><div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--border))] sm:grid-cols-2">{industries.map(([industry, description, Icon], index) => <div key={industry} className="group bg-[hsl(var(--card))] p-5 transition-colors hover:bg-[hsl(var(--muted)/.7)]"><div className="flex items-center justify-between"><Icon className="h-5 w-5 text-[hsl(var(--primary))]" /><span className="font-mono-custom text-[10px] text-[hsl(var(--muted-foreground))]">0{index + 1}</span></div><h3 className="mt-8 font-display text-lg font-semibold">{industry}</h3><p className="mt-2 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{description}</p></div>)}</div></div>
+          <div><p className="max-w-[650px] text-lg leading-8 text-[hsl(var(--muted-foreground))]">Aptivoro can shape the digital system behind the business — without pretending to already have clients, case-study results, or a one-size-fits-all package.</p><div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--border))] sm:grid-cols-2">{industries.map(([industry, description, Icon], index) => <div key={industry} className="group bg-[hsl(var(--card))] p-5 transition-colors hover:bg-[hsl(var(--muted)/.7)]"><div className="flex items-center justify-between"><Icon className="h-5 w-5 text-[hsl(var(--primary))]" /><span className="font-mono-custom text-[10px] text-[hsl(var(--muted-foreground))]">0{index + 1}</span></div><h3 className="mt-8 font-display text-lg font-semibold">{industry}</h3><p className="mt-2 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{description}</p></div>)}</div></div>
         </div>
       </Reveal>
     </section>
@@ -620,19 +721,19 @@ function Skills() {
   );
 }
 
-function WhyAutomexa() {
+function WhyAptivoro() {
   const { ref, visible } = useReveal();
   return (
-    <section id="why-automexa" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
+    <section id="why-aptivoro" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-36">
       <div ref={ref} className={`reveal ${visible ? 'is-visible' : ''}`}>
         <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
           <div>
-            <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">08 / Why Automexa</p>
+            <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">08 / Why Aptivoro</p>
             <h2 className="mt-5 max-w-[470px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Technology is only useful when it solves the right problem.</h2>
           </div>
           <div className="max-w-[650px]">
             <p className="text-[clamp(1.35rem,2.5vw,2.15rem)] leading-[1.3] tracking-[-.035em]">
-              Automexa starts with the business problem, not the tool list.
+              Aptivoro starts with the business problem, not the tool list.
             </p>
             <p className="mt-7 max-w-[550px] leading-7 text-[hsl(var(--muted-foreground))]">
               Understand the problem. Design the right system. Connect the moving parts. Build practical solutions. Focus on useful outcomes.
@@ -668,19 +769,19 @@ function ProjectArt({ project }: { project: Project }) {
     </div>
   );
 }
-function AutomexaAgent() {
+function AptivoroAgent() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
       content:
-        "Hi! I'm the Automexa Assistant. I can help you understand our services, digital systems, and how we can improve your business.",
+        "Hi! I'm the Aptivoro Assistant. I can help you understand our services, digital systems, and how we can improve your business.",
     },
   ]);
 
   const suggestions = [
-    'What can Automexa build?',
+    'What can Aptivoro build?',
     'Can you automate my business?',
     'What services do you offer?',
     'I want to start a project',
@@ -725,7 +826,7 @@ function AutomexaAgent() {
       },
     ]);
   } catch (error) {
-    console.error('Automexa Agent error:', error);
+    console.error('Aptivoro Agent error:', error);
 
     setMessages((prev) => [
       ...prev,
@@ -744,7 +845,7 @@ function AutomexaAgent() {
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          aria-label="Open Automexa Assistant"
+          aria-label="Open Aptivoro Assistant"
           className="fixed bottom-6 right-6 z-[90] flex items-center gap-3 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--foreground))] px-5 py-3.5 text-[hsl(var(--background))] shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))]"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--background)/.12)]">
@@ -752,7 +853,7 @@ function AutomexaAgent() {
           </span>
 
           <span className="text-xs font-bold uppercase tracking-[.12em]">
-            Ask Automexa
+            Ask Aptivoro
           </span>
         </button>
       )}
@@ -770,7 +871,7 @@ function AutomexaAgent() {
 
               <div>
                 <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
-                  Automexa
+                  Aptivoro
                 </p>
 
                 <p className="mt-1 text-sm font-semibold">
@@ -858,7 +959,7 @@ function AutomexaAgent() {
                     handleSend();
                   }
                 }}
-                placeholder="Ask about Automexa..."
+                placeholder="Ask about Aptivoro..."
                 className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm outline-none placeholder:text-[hsl(var(--muted-foreground))]"
               />
 
@@ -875,7 +976,7 @@ function AutomexaAgent() {
             </div>
 
             <p className="mt-3 text-center font-mono-custom text-[8px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">
-              Automexa digital systems assistant
+              Aptivoro digital systems assistant
             </p>
           </div>
         </div>
@@ -1179,7 +1280,7 @@ function Work({ onSelect }: { onSelect: (project: Project) => void }) {
 
                   <div>
                     <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--muted-foreground))]">
-                      Automexa intelligence
+                      Aptivoro intelligence
                     </p>
 
                     <p className="mt-1 text-sm font-semibold">
@@ -1570,7 +1671,7 @@ function References() {
       <div className="mx-auto max-w-[1240px]">
         <Reveal>
           <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-center">
-            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">10 / Testimonials &amp; references</p><h2 className="mt-5 max-w-[390px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Let the right people speak.</h2></div>
+            <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">11 / Testimonials &amp; references</p><h2 className="mt-5 max-w-[390px] font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] sm:text-5xl">Let the right people speak.</h2></div>
             <div className="rounded-2xl border border-dashed border-[hsl(var(--border))] bg-[hsl(var(--background)/.55)] p-7 sm:p-10"><MessageSquareText className="h-6 w-6 text-[hsl(var(--primary))]" /><p className="mt-8 max-w-[500px] font-display text-2xl leading-[1.25] tracking-[-.035em]">Testimonials and professional references will live here once they are available.</p><p className="mt-5 text-sm leading-6 text-[hsl(var(--muted-foreground))]">No quotes, names, companies, or outcomes have been added without source material.</p></div>
           </div>
         </Reveal>
@@ -1585,7 +1686,7 @@ function Resume() {
     <section id="resume" className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:px-10 lg:py-28">
       <Reveal>
         <div className="flex flex-col justify-between gap-8 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-7 sm:p-10 lg:flex-row lg:items-center">
-          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">11 / Resume</p><h2 className="mt-4 font-display text-3xl font-semibold tracking-[-.05em] sm:text-4xl">A fuller professional record.</h2><p className="mt-3 max-w-[550px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Download Saydul’s current CV as supplied.</p></div>
+          <div><p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">12 / Resume</p><h2 className="mt-4 font-display text-3xl font-semibold tracking-[-.05em] sm:text-4xl">A fuller professional record.</h2><p className="mt-3 max-w-[550px] text-sm leading-6 text-[hsl(var(--muted-foreground))]">Download Saydul’s current CV as supplied.</p></div>
           <a href={resumeFile} download="Saydul_Haque_Sayeed_CV(Update)_1788465350283.pdf" data-testid="link-resume-download" className="button-with-arrow flex w-fit shrink-0 items-center gap-3 rounded-full bg-[hsl(var(--primary))] px-5 py-3.5 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--primary-foreground))] transition-transform hover:-translate-y-1">Download Resume <FileText className="button-arrow h-4 w-4" /></a>
         </div>
       </Reveal>
@@ -1638,9 +1739,9 @@ function Contact() {
         <Reveal>
           <div className="grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-24">
             <div>
-              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">12 / Contact Automexa</p>
+              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">13 / Contact Aptivoro</p>
               <h2 className="mt-6 max-w-[620px] font-display text-[clamp(3.2rem,7vw,6.8rem)] font-semibold leading-[.9] tracking-[-.075em]">Have a system<br />worth <span className="text-[hsl(var(--secondary))]">untangling?</span></h2>
-              <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell Automexa what you’re building, where the repetition is, or what currently feels harder than it should.</p>
+              <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell Aptivoro what you’re building, where the repetition is, or what currently feels harder than it should.</p>
               <div className="mt-10 space-y-4 text-sm">
                 <div className="flex items-center gap-3 text-[hsl(var(--background)/.9)]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /><a href="mailto:haquesaydul200411@gmail.com" data-testid="link-email" className="transition-colors hover:text-[hsl(var(--secondary))]">haquesaydul200411@gmail.com</a><button type="button" onClick={copyEmail} data-testid="button-copy-email" aria-label="Copy email address" className="ml-1 opacity-60 transition-opacity hover:opacity-100">{copied ? <Check className="h-3.5 w-3.5 text-[hsl(var(--secondary))]" /> : <Copy className="h-3.5 w-3.5" />}</button></div>
                 <a href="tel:+8801616094323" data-testid="link-phone" className="flex items-center gap-3 text-[hsl(var(--background)/.72)] transition-colors hover:text-[hsl(var(--secondary))]"><Phone className="h-4 w-4 text-[hsl(var(--secondary))]" /> +8801616094323</a>
@@ -1710,11 +1811,11 @@ function Contact() {
           </div>
         </Reveal>
         <footer className="mt-24 flex flex-col justify-between gap-6 border-t border-[hsl(var(--background)/.18)] pt-6 text-[10px] sm:flex-row sm:items-start">
-          <span className="font-display text-sm font-bold">Automexa<span className="ml-2 font-mono-custom text-[10px] font-normal uppercase tracking-[.12em] text-[hsl(var(--secondary))]">by Saydul Haque Sayeed</span></span>
+          <span className="font-display text-sm font-bold">Aptivoro<span className="ml-2 font-mono-custom text-[10px] font-normal uppercase tracking-[.12em] text-[hsl(var(--secondary))]">by Saydul Haque Sayeed</span></span>
           <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono-custom uppercase tracking-[.13em] text-[hsl(var(--background)/.45)]">
             {['Services', 'Work', 'Solutions', 'About', 'Contact'].map((label) => <button key={label} type="button" onClick={() => scrollToId(label.toLowerCase())} className="transition-colors hover:text-[hsl(var(--secondary))]">{label}</button>)}
           </div>
-          <span className="font-mono-custom text-[hsl(var(--background)/.45)]">© 2026 Automexa</span>
+          <span className="font-mono-custom text-[hsl(var(--background)/.45)]">© 2026 Aptivoro</span>
         </footer>
       </div>
     </section>
@@ -1774,7 +1875,7 @@ function FinalCTA() {
           <div className="relative max-w-[700px]">
             <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--foreground)/.6)]">Let’s build something useful</p>
             <h2 className="mt-5 font-display text-4xl font-semibold leading-[.98] tracking-[-.06em] sm:text-6xl">Start with the messy part.</h2>
-            <p className="mt-6 max-w-[540px] text-base leading-7 text-[hsl(var(--foreground)/.72)]">Tell Automexa what is repetitive, disconnected, unclear, or waiting to become a real product.</p>
+            <p className="mt-6 max-w-[540px] text-base leading-7 text-[hsl(var(--foreground)/.72)]">Tell Aptivoro what is repetitive, disconnected, unclear, or waiting to become a real product.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <button type="button" onClick={() => scrollToId('contact')} data-testid="button-final-start" className="button-with-arrow flex items-center gap-3 rounded-full bg-[hsl(var(--foreground))] px-5 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--background))]">Start a Project <ArrowUpRight className="button-arrow h-4 w-4" /></button>
               <button type="button" onClick={() => scrollToId('contact')} data-testid="button-final-call" className="flex items-center gap-2 rounded-full border border-[hsl(var(--foreground)/.35)] px-5 py-3 text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--foreground))]">Book a Call</button>
@@ -1803,9 +1904,9 @@ function Home() {
         <Skills />
         <Work onSelect={setSelectedProject} />
         <Process />
-        <WhyAutomexa />
+        <WhyAptivoro />
         <Journey />
-        
+        <InstagramFeed />
         <References />
         <Resume />
         <FinalCTA />
@@ -1820,13 +1921,15 @@ function Router() {
   return (
     <RoutedErrorBoundary>
       <Switch>
+        <Route path="/admin/hero" component={HeroManagement} />
         <Route path="/" component={Home} />
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/login" component={AdminLogin} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
   );
 }
-
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
@@ -1840,7 +1943,7 @@ function App() {
           <Router />
         </WouterRouter>
 
-        <AutomexaAgent />
+        <AptivoroAgent />
 
         <Toaster />
       </TooltipProvider>
