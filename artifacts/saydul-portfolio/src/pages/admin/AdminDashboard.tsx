@@ -25,7 +25,7 @@ const sections = [
   { number: "05", name: "Skills", icon: BarChart3 },
   { number: "06", name: "Work / Projects", icon: BriefcaseBusiness },
   { number: "07", name: "Process", icon: ChevronRight },
-  { number: "08", name: "Why Aptivoro", icon: Sparkles },
+  { number: "08", name: "Why Aptimexa", icon: Sparkles },
   { number: "09", name: "Journey", icon: ChevronRight },
   { number: "10", name: "References", icon: MessageSquareQuote },
   { number: "11", name: "Instagram", icon: Instagram },
@@ -42,7 +42,7 @@ export default function AdminDashboard() {
       <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-[hsl(var(--border))] bg-[hsl(var(--background))]/95 px-5 backdrop-blur lg:hidden">
         <div>
           <p className="font-display text-lg font-bold tracking-[-.04em]">
-            Aptivoro
+            Aptimexa
           </p>
 
           <p className="font-mono-custom text-[8px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
           <div className="flex h-20 items-center justify-between border-b border-[hsl(var(--border))] px-6">
             <div>
               <p className="font-display text-xl font-bold tracking-[-.05em]">
-                Aptivoro
+                Aptimexa
               </p>
 
               <p className="mt-1 font-mono-custom text-[8px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
@@ -188,7 +188,7 @@ export default function AdminDashboard() {
             <div className="flex flex-col gap-5 border-b border-[hsl(var(--border))] pb-8 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
-                  Aptivoro / Admin
+                  Aptimexa / Admin
                 </p>
 
                 <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-.055em] sm:text-5xl">

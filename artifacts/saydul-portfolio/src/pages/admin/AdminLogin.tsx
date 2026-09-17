@@ -55,7 +55,7 @@ export default function AdminLogin() {
           </div>
 
           <p className="mt-7 font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--accent))]">
-            Aptivoro / Admin
+            Aptimexa / Admin
           </p>
 
           <h1 className="mt-3 font-display text-3xl font-semibold tracking-[-.05em]">

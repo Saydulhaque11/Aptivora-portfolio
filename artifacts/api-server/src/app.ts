@@ -41,7 +41,7 @@ app.use(
   session({
     secret:
       process.env.SESSION_SECRET ||
-      "aptivoro-local-development-session-secret",
+      "Aptimexa-local-development-session-secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
