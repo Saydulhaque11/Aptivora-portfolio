@@ -1,5 +1,5 @@
 import InstagramFeed from "@/components/InstagramFeed";
-import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AdminLogin from "@/pages/admin/AdminLogin";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
@@ -15,9 +15,7 @@ import {
   ChevronLeft,
   ChevronRight,
   CircleCheck,
-  Clock3,
   Code2,
-  Copy,
   DatabaseZap,
   ExternalLink,
   FileText,
@@ -26,10 +24,10 @@ import {
   House,
   Instagram,
   Linkedin,
-  Mail,
   Megaphone,
   Menu,
   MessageSquareText,
+  MessageCircle,
   Network,
   Palette,
   Phone,
@@ -769,223 +767,6 @@ function ProjectArt({ project }: { project: Project }) {
     </div>
   );
 }
-function AptimexaAgent() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content:
-        "Hi! I'm the Aptimexa Assistant. I can help you understand our services, digital systems, and how we can improve your business.",
-    },
-  ]);
-
-  const suggestions = [
-    'What can Aptimexa build?',
-    'Can you automate my business?',
-    'What services do you offer?',
-    'I want to start a project',
-  ];
-
-  const handleSend = async (text?: string) => {
-  const value = (text ?? message).trim();
-
-  if (!value) return;
-
-  const userMessage = {
-    role: 'user' as const,
-    content: value,
-  };
-
-  setMessages((prev) => [...prev, userMessage]);
-  setMessage('');
-
-  try {
-    const response = await fetch('/api/agent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        message: value,
-        history: messages,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || 'AI request failed');
-    }
-
-    setMessages((prev) => [
-      ...prev,
-      {
-        role: 'assistant' as const,
-        content: data.answer,
-      },
-    ]);
-  } catch (error) {
-    console.error('Aptimexa Agent error:', error);
-
-    setMessages((prev) => [
-      ...prev,
-      {
-        role: 'assistant' as const,
-        content:
-          "I'm having trouble connecting to the AI system right now. Please try again in a moment.",
-      },
-    ]);
-  }
-};
-  return (
-    <>
-      {/* Floating Agent Button */}
-      {!isOpen && (
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open Aptimexa Assistant"
-          className="fixed bottom-6 right-6 z-[90] flex items-center gap-3 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--foreground))] px-5 py-3.5 text-[hsl(var(--background))] shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))]"
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--background)/.12)]">
-            <Bot className="h-4 w-4" />
-          </span>
-
-          <span className="text-xs font-bold uppercase tracking-[.12em]">
-            Ask Aptimexa
-          </span>
-        </button>
-      )}
-
-      {/* Agent Panel */}
-      {isOpen && (
-        <div className="fixed bottom-5 right-5 z-[90] flex w-[calc(100vw-40px)] max-w-[410px] flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[hsl(var(--background))] shadow-2xl">
-
-          {/* Header */}
-          <div className="flex items-center justify-between border-b border-[hsl(var(--border))] px-5 py-4">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]">
-                <Bot className="h-5 w-5" />
-              </div>
-
-              <div>
-                <p className="font-mono-custom text-[9px] uppercase tracking-[.16em] text-[hsl(var(--accent))]">
-                  Aptimexa
-                </p>
-
-                <p className="mt-1 text-sm font-semibold">
-                  Digital Systems Assistant
-                </p>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              aria-label="Close assistant"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-[hsl(var(--border))] text-[hsl(var(--muted-foreground))] transition-colors hover:bg-[hsl(var(--muted))] hover:text-[hsl(var(--foreground))]"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-
-          {/* Status */}
-          <div className="flex items-center gap-2 border-b border-[hsl(var(--border))] px-5 py-3">
-            <span className="h-2 w-2 rounded-full bg-[hsl(var(--secondary))]" />
-
-            <span className="font-mono-custom text-[9px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))]">
-              Ready to help
-            </span>
-          </div>
-
-          {/* Messages */}
-          <div className="max-h-[430px] min-h-[300px] space-y-4 overflow-y-auto p-5">
-
-            {messages.map((item, index) => (
-              <div
-                key={index}
-                className={`flex ${
-                  item.role === 'user'
-                    ? 'justify-end'
-                    : 'justify-start'
-                }`}
-              >
-                <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 ${
-                    item.role === 'user'
-                      ? 'rounded-br-md bg-[hsl(var(--foreground))] text-[hsl(var(--background))]'
-                      : 'rounded-bl-md bg-[hsl(var(--muted))] text-[hsl(var(--foreground))]'
-                  }`}
-                >
-                  {item.content}
-                </div>
-              </div>
-            ))}
-
-            {/* Suggestions */}
-            {messages.length === 1 && (
-              <div className="pt-2">
-                <p className="mb-3 font-mono-custom text-[9px] uppercase tracking-[.14em] text-[hsl(var(--muted-foreground))]">
-                  Try asking
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {suggestions.map((suggestion) => (
-                    <button
-                      key={suggestion}
-                      type="button"
-                      onClick={() => handleSend(suggestion)}
-                      className="rounded-full border border-[hsl(var(--border))] px-3 py-2 text-[10px] font-semibold text-[hsl(var(--muted-foreground))] transition-all hover:border-[hsl(var(--primary))] hover:text-[hsl(var(--foreground))]"
-                    >
-                      {suggestion}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Input */}
-          <div className="border-t border-[hsl(var(--border))] p-4">
-            <div className="flex items-center gap-2 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--muted)/.45)] p-2">
-
-              <input
-                type="text"
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter') {
-                    handleSend();
-                  }
-                }}
-                placeholder="Ask about Aptimexa..."
-                className="min-w-0 flex-1 bg-transparent px-2 py-2 text-sm outline-none placeholder:text-[hsl(var(--muted-foreground))]"
-              />
-
-              <button
-                type="button"
-                onClick={() => handleSend()}
-                disabled={!message.trim()}
-                aria-label="Send message"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--foreground))] text-[hsl(var(--background))] transition-colors hover:bg-[hsl(var(--primary))] hover:text-[hsl(var(--primary-foreground))] disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <Send className="h-4 w-4" />
-              </button>
-
-            </div>
-
-            <p className="mt-3 text-center font-mono-custom text-[8px] uppercase tracking-[.12em] text-[hsl(var(--muted-foreground))]">
-              Aptimexa digital systems assistant
-            </p>
-          </div>
-        </div>
-      )}
-    </>
-  );
-}
-
-
 function Work({ onSelect }: { onSelect: (project: Project) => void }) {
   const [businessType, setBusinessType] = useState('');
   const [challenge, setChallenge] = useState('');
@@ -1695,119 +1476,28 @@ function Resume() {
 }
 
 function Contact() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [projectType, setProjectType] = useState('');
-  const [website, setWebsite] = useState('');
-  const [sent, setSent] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
-  const [copied, setCopied] = useState(false);
-  const copyEmail = async () => {
-    await navigator.clipboard?.writeText('haquesaydul200411@gmail.com');
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
-  };
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setError('');
-    setSubmitting(true);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, projectType, website }),
-      });
-      const data = (await response.json().catch(() => null)) as { message?: string } | null;
-
-      if (!response.ok) {
-        throw new Error(data?.message || 'Your message could not be delivered. Please try again.');
-      }
-
-      setSent(true);
-    } catch (submissionError) {
-      setError(submissionError instanceof Error ? submissionError.message : 'Your message could not be delivered. Please try again.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
   return (
     <section id="contact" className="bg-[hsl(var(--foreground))] px-5 py-24 text-[hsl(var(--background))] sm:px-8 lg:px-10 lg:py-36">
       <div className="mx-auto max-w-[1240px]">
         <Reveal>
-          <div className="grid gap-14 lg:grid-cols-[1.05fr_.95fr] lg:gap-24">
-            <div>
-              <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">13 / Contact Aptimexa</p>
-              <h2 className="mt-6 max-w-[620px] font-display text-[clamp(3.2rem,7vw,6.8rem)] font-semibold leading-[.9] tracking-[-.075em]">Have a system<br />worth <span className="text-[hsl(var(--secondary))]">untangling?</span></h2>
-              <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell Aptimexa what you’re building, where the repetition is, or what currently feels harder than it should.</p>
-              <div className="mt-10 space-y-4 text-sm">
-                <div className="flex items-center gap-3 text-[hsl(var(--background)/.9)]"><Mail className="h-4 w-4 text-[hsl(var(--secondary))]" /><a href="mailto:haquesaydul200411@gmail.com" data-testid="link-email" className="transition-colors hover:text-[hsl(var(--secondary))]">haquesaydul200411@gmail.com</a><button type="button" onClick={copyEmail} data-testid="button-copy-email" aria-label="Copy email address" className="ml-1 opacity-60 transition-opacity hover:opacity-100">{copied ? <Check className="h-3.5 w-3.5 text-[hsl(var(--secondary))]" /> : <Copy className="h-3.5 w-3.5" />}</button></div>
-                <a href="tel:+8801616094323" data-testid="link-phone" className="flex items-center gap-3 text-[hsl(var(--background)/.72)] transition-colors hover:text-[hsl(var(--secondary))]"><Phone className="h-4 w-4 text-[hsl(var(--secondary))]" /> +8801616094323</a>
-                <div className="flex items-center gap-3 text-[hsl(var(--background)/.55)]"><Clock3 className="h-4 w-4 text-[hsl(var(--secondary))]" /> Response time not provided</div>
+          <div className="max-w-[900px]">
+            <p className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[hsl(var(--secondary))]">13 / Contact Aptimexa</p>
+            <h2 className="mt-6 max-w-[620px] font-display text-[clamp(3.2rem,7vw,6.8rem)] font-semibold leading-[.9] tracking-[-.075em]">Have a system<br />worth <span className="text-[hsl(var(--secondary))]">untangling?</span></h2>
+            <p className="mt-8 max-w-[430px] text-base leading-7 text-[hsl(var(--background)/.65)]">Tell Aptimexa what you’re building, where the repetition is, or what currently feels harder than it should.</p>
+            <div className="mt-10 border-t border-[hsl(var(--background)/.16)] pt-6">
+              <p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--background)/.42)]">Connect with me</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a href="https://wa.me/8801616094323" target="_blank" rel="noreferrer" data-testid="link-social-whatsapp" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]">
+                  <MessageCircle  className="h-3.5 w-3.5" /> WhatsApp <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
+                <a href="https://www.instagram.com/saydul.ai/" target="_blank" rel="noreferrer" data-testid="link-social-instagram" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]">
+                  <Instagram className="h-3.5 w-3.5" /> Instagram <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
+                <a href="https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/" target="_blank" rel="noreferrer" data-testid="link-social-linkedin" className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]">
+                  <Linkedin className="h-3.5 w-3.5" /> LinkedIn <ExternalLink className="h-3 w-3 opacity-50" />
+                </a>
               </div>
-              <div className="mt-10 border-t border-[hsl(var(--background)/.16)] pt-6">
-  <p className="font-mono-custom text-[10px] uppercase tracking-[.14em] text-[hsl(var(--background)/.42)]">
-    Social links
-  </p>
-
-  <div className="mt-4 flex flex-wrap gap-2">
-    <a
-      href="https://www.linkedin.com/in/saydul-haque-sayeed-6a8a18368/"
-      target="_blank"
-      rel="noreferrer"
-      data-testid="link-social-linkedin"
-      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
-    >
-      <Linkedin className="h-3.5 w-3.5" />
-      LinkedIn
-      <ExternalLink className="h-3 w-3 opacity-50" />
-    </a>
-
-    <a
-      href="https://github.com/Saydulhaque11"
-      target="_blank"
-      rel="noreferrer"
-      data-testid="link-social-github"
-      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
-    >
-      <Github className="h-3.5 w-3.5" />
-      GitHub
-      <ExternalLink className="h-3 w-3 opacity-50" />
-    </a>
-
-    <a
-      href="https://www.instagram.com/saydul.ai/"
-      target="_blank"
-      rel="noreferrer"
-      data-testid="link-social-instagram"
-      className="flex items-center gap-2 rounded-full border border-[hsl(var(--background)/.2)] px-3 py-2 text-xs text-[hsl(var(--background)/.72)] transition-colors hover:border-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary))]"
-    >
-      <Instagram className="h-3.5 w-3.5" />
-      Instagram
-      <ExternalLink className="h-3 w-3 opacity-50" />
-    </a>
-  </div>
-</div>
             </div>
-            <form onSubmit={submit} className="rounded-2xl border border-[hsl(var(--background)/.2)] bg-[hsl(var(--background)/.06)] p-6 sm:p-8">
-              {sent ? (
-                <div className="flex min-h-[320px] flex-col justify-center" aria-live="polite"><div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--secondary))] text-[hsl(var(--foreground))]"><Check className="h-5 w-5" /></div><h3 className="font-display text-3xl font-semibold">Thanks — your message has been sent.</h3><p className="mt-3 max-w-[330px] text-sm leading-6 text-[hsl(var(--background)/.6)]">Your note has been delivered to Saydul’s inbox. He’ll be able to reply directly to your email address.</p><button type="button" onClick={() => { setSent(false); setName(''); setEmail(''); setMessage(''); setProjectType(''); setWebsite(''); setError(''); }} data-testid="button-send-another" className="mt-8 flex w-fit items-center gap-2 border-b border-[hsl(var(--secondary))] pb-1 text-xs font-bold uppercase tracking-[.13em]">Send another <ArrowRight className="h-3.5 w-3.5" /></button></div>
-              ) : (
-                <>
-                  <div className="mb-8 flex items-center justify-between"><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[hsl(var(--background)/.5)]">start a thread</span><MessageSquareText className="h-5 w-5 text-[hsl(var(--secondary))]" /></div>
-                   <label className="block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Your name</span><input required type="text" value={name} onChange={(event) => setName(event.target.value)} data-testid="input-contact-name" placeholder="Your name" maxLength={120} autoComplete="name" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
-                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Your email</span><input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} data-testid="input-contact-email" placeholder="you@company.com" maxLength={254} autoComplete="email" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
-                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">Project type <span className="normal-case tracking-normal text-[hsl(var(--background)/.35)]">(optional)</span></span><select value={projectType} onChange={(event) => setProjectType(event.target.value)} data-testid="select-contact-project-type" className="mt-3 w-full border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none focus:border-[hsl(var(--secondary))]"><option value="" className="text-[hsl(var(--foreground))]">Not sure yet</option><option value="AI & Automation" className="text-[hsl(var(--foreground))]">AI &amp; Automation</option><option value="Website" className="text-[hsl(var(--foreground))]">Website</option><option value="Mobile App" className="text-[hsl(var(--foreground))]">Mobile App</option><option value="CRM & Sales" className="text-[hsl(var(--foreground))]">CRM &amp; Sales</option><option value="Design & Branding" className="text-[hsl(var(--foreground))]">Design &amp; Branding</option><option value="Video & Content" className="text-[hsl(var(--foreground))]">Video &amp; Content</option></select></label>
-                   <label className="sr-only" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} /></label>
-                   <label className="mt-8 block"><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-[hsl(var(--background)/.55)]">What are you thinking about?</span><textarea required value={message} onChange={(event) => setMessage(event.target.value)} data-testid="textarea-contact-message" placeholder="A workflow, an agent, a web experience..." rows={4} maxLength={5000} className="mt-3 w-full resize-none border-b border-[hsl(var(--background)/.25)] bg-transparent px-0 py-3 text-sm outline-none placeholder:text-[hsl(var(--background)/.3)] focus:border-[hsl(var(--secondary))]" /></label>
-                   {error && <p role="alert" data-testid="status-contact-error" className="mt-5 rounded-lg border border-[hsl(var(--secondary)/.45)] bg-[hsl(var(--secondary)/.1)] px-3 py-3 text-xs leading-5 text-[hsl(var(--background)/.85)]">{error}</p>}
-                   <button type="submit" disabled={submitting} data-testid="button-submit-contact" className="button-with-arrow mt-9 flex w-full items-center justify-between rounded-xl bg-[hsl(var(--secondary))] px-5 py-4 text-left text-xs font-bold uppercase tracking-[.12em] text-[hsl(var(--foreground))] transition-transform hover:-translate-y-1 disabled:cursor-wait disabled:opacity-60">{submitting ? 'Sending…' : 'Send a note'} <Send className="button-arrow h-4 w-4" /></button>
-                   <p className="mt-4 text-[10px] leading-5 text-[hsl(var(--background)/.38)]">Your message is sent securely through the portfolio backend.</p>
-                </>
-              )}
-            </form>
           </div>
         </Reveal>
         <footer className="mt-24 flex flex-col justify-between gap-6 border-t border-[hsl(var(--background)/.18)] pt-6 text-[10px] sm:flex-row sm:items-start">
@@ -1942,8 +1632,6 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
           <Router />
         </WouterRouter>
-
-        <AptimexaAgent />
 
         <Toaster />
       </TooltipProvider>
